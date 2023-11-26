@@ -19,7 +19,6 @@ CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 AR = ar rc
-#INCLUDE  = -I include/ -I libft/ mlx/
 INCLUDE = -I include/ -I libft/ -I mlx/
 
 
