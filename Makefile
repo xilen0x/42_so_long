@@ -6,7 +6,6 @@ MLX_DIR = mlx/
 
 LIBFT_FILE = libft.a
 PRINTF_FILE = libftprintf.a
-
 MLX_FILE = libmlx.a
 
 LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
@@ -25,8 +24,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 AR = ar rc
-#INCLUDE = -I include/ -I libft/ -I mlx/ -I 
-INCLUDE = -I include/ -I $(LIBFT_DIR) -I $(MLX_DIR) -I $(PRINTF_DIR)
+INCLUDE = -I include/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)
 
 all: 		$(NAME)
 
@@ -36,7 +34,7 @@ subsystems:
 			@make -C $(PRINTF_DIR)
 
 $(NAME):	subsystems $(OBJS_DIR) $(OBJS)
-			@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -L$(PRINTF_DIR) -libftprintf $(MLXFLAGS) -o $@
+			@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -L $(PRINTF_DIR) $(MLXFLAGS) -o $@
 
 $(OBJS_DIR):
 						@mkdir $@
