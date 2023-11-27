@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   map_load.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 13:45:23 by castorga          #+#    #+#             */
-/*   Updated: 2023/11/27 13:45:26 by castorga         ###   ########.fr       */
+/*   Created: 2023/11/27 15:21:15 by castorga          #+#    #+#             */
+/*   Updated: 2023/11/27 15:21:17 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/*Funcion que verifica la extension .ber*/
-int	file_is_ber(char *str)
+/**/
+void	create_map(int fd, t_game *game)
 {
-	int	len;
+	char	*line_result;
 
-	len = ft_strlen(str);
-	if (ft_strncmp(&str[len - 4], ".ber", 4) == 0)
+	(void)game;
+	while ((line_result = get_next_line(fd)) != NULL)
 	{
-		//write (2, "ok\n", 3);
-		return (0);
+		ft_printf("%s\n", line_result);
+		free(line_result);
 	}
-	else
-	{
-		write (2, "Error\n", 6);
-		write (2, "The file does not have a .ber extension.\n", 41);
-		exit(1);
-	}
+	close(fd);
+}
+
+/*Funcion que abre el mapa en modo lectura y almacena su fd en map_fd*/
+int	open_map(char *av, t_game *game)
+{
+	game->map_fd = open(av, O_RDONLY);
+	if (game->map_fd == -1)
+		ft_errors(2);
+	create_map(game->map_fd, game);
+	return (0);
 }

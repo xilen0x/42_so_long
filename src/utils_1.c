@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 13:45:23 by castorga          #+#    #+#             */
-/*   Updated: 2023/11/27 13:45:26 by castorga         ###   ########.fr       */
+/*   Created: 2023/11/27 15:45:51 by castorga          #+#    #+#             */
+/*   Updated: 2023/11/27 15:45:54 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/*Funcion que verifica la extension .ber*/
-int	file_is_ber(char *str)
+/*Funcion que muestra mensajes de error*/
+int	ft_errors(int n)
 {
-	int	len;
-
-	len = ft_strlen(str);
-	if (ft_strncmp(&str[len - 4], ".ber", 4) == 0)
-	{
-		//write (2, "ok\n", 3);
-		return (0);
-	}
-	else
+	if (n == 1)
 	{
 		write (2, "Error\n", 6);
-		write (2, "The file does not have a .ber extension.\n", 41);
+		write (2, "Use: ./so_long <map.ber>\n", 25);
 		exit(1);
 	}
+	else if (n == 2)
+	{
+		write (2, "Error\n", 6);
+		write (2, "It was not possible to open the file\n", 37);
+		exit(1);
+	}
+	else if (n == 3)
+	{
+		//write (2, "bash: outfile: Permission denied\n", 33);
+		exit(1);
+	}
+	else if (n == 4)
+	{
+		//write (2, "Command not found!\n", 19);
+		exit(1);
+	}
+	else
+		//write (2, "error", 5);
+	return (1);
 }

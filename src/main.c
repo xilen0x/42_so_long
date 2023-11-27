@@ -30,16 +30,14 @@ cc main.c -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 int	main(int ac, char *av[])
 {
-	(void)av;
+	t_game	game;
+
 	if (ac == 2)
 	{
 		file_is_ber(av[1]);
+		open_map(av[1], &game);
 	}
 	else
-	{
-		write (2, "Error\n", 6);
-		write (2, "Use: ./so_long <map.ber>\n", 25);
-		exit(1);
-	}
+		ft_errors(1);
 	return (0);
 }

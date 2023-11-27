@@ -14,17 +14,24 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
+# include "../libft/getNextLine/get_next_line.h"
+# include "../libft/ft_printf/ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
 
-int	file_is_ber(char *str);
-// typedef struct s_win
-// {
-// 	void	*mlx;
-// 	void	*mlx_win;
-// 	int		height;
-// 	int		width;
-// }t_win;
+typedef struct s_game
+{
+	void	*mlx;
+	void	*mlx_win;
+	int		height;
+	int		width;
+	int		map_fd;
+}t_game;
 
+int		file_is_ber(char *str);
+int		open_map(char *av, t_game *game);
+int		ft_errors(int n);
+void	create_map(int fd, t_game *game);
 
 #endif
