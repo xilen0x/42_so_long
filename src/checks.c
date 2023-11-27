@@ -16,9 +16,10 @@ int	file_is_ber(char *str)
 {
 	int	len;
 
-	len = ft_strlen(&str[1]);
+	len = ft_strlen(str);
 	if (ft_strncmp(&str[len - 4], ".ber", 4) == 0)
 	{
+		write (2, "ok\n", 3);
 		return (0);
 	}
 	else
