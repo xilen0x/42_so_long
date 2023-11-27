@@ -1,45 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 15:46:30 by castorga          #+#    #+#             */
-/*   Updated: 2023/11/26 15:46:32 by castorga         ###   ########.fr       */
+/*   Created: 2023/11/27 13:45:23 by castorga          #+#    #+#             */
+/*   Updated: 2023/11/27 13:45:26 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mlx/mlx.h"
 #include "../include/so_long.h"
-//#include "../include/window.h"
-/*
-cc main.c -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
-*/
 
-/*int	main(void)
+int	file_is_ber(char *str)
 {
-	t_win	my_program;
+	int	len;
 
-	my_program = new_program(300, 300, "so_long");
-	if (!my_program.mlx || !my_program.mlx_win)
-		return (1);
-	mlx_loop(my_program.mlx);
-	return (0);
-}*/
-
-int	main(int ac, char *av[])
-{
-	(void)av;
-	if (ac == 2)
+	len = ft_strlen(&str[1]);
+	if (ft_strncmp(&str[len - 4], ".ber", 4) == 0)
 	{
-		file_is_ber(av[1]);
+		return (0);
 	}
 	else
 	{
 		write (2, "Error\n", 6);
-		write (2, "Use: ./so_long <map.ber>\n", 25);
+		write (2, "The file does not have a .ber extension.\n", 41);
 		exit(1);
 	}
-	return (0);
 }
