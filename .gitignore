@@ -2,3 +2,5 @@
 *.o	
 so_long
 mlx/*.o
+libft/obj/
+objs/
