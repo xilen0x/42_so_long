@@ -15,15 +15,37 @@
 /**/
 void	create_map(int fd, t_game *game)
 {
-	char	*line_result;
+	//char	*line;
+	char	*row;
+	int		i;
+	int		j;
 
-	(void)game;
-	while ((line_result = get_next_line(fd)) != NULL)
+	i = 0;
+	j = 0;
+	row = get_next_line(fd);
+	game->width = ft_strlen(get_next_line(fd));//n de cols
+	while (row[i])
 	{
-		ft_printf("%s\n", line_result);
-		free(line_result);
+		row = get_next_line(fd);
+		ft_printf("test ");//entra 2 veces aqui?
+		while (row[i] <= game->width)
+		{
+			if (row[i] == '\n')
+				i++;
+		}
 	}
-	close(fd);
+	game->height = i;//n de rows
+	game->map = (char *)malloc(sizeof(char) * (game->width * game->height));
+	while (i < game->height)
+	{
+		while (j < game->width)
+		{
+			game->map = get_next_line(fd);
+			ft_printf("%s", game->map);
+			j++;
+		}
+		i++;
+	}
 }
 
 /*Funcion que abre el mapa en modo lectura y almacena su fd en map_fd*/

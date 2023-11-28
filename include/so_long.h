@@ -25,6 +25,7 @@ typedef struct s_game
 	int		height;
 	int		width;
 	int		map_fd;
+	char	*map;
 }t_game;
 
 int		file_is_ber(char *str);

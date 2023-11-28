@@ -59,9 +59,9 @@ $(NAME): $(OBJ) $(HEADER)
 	@echo "====================================="
 	@echo "**** Building... $@"
 	ar rcs $(NAME) $(OBJ)
+	@echo "====================================="
 
 -include $(DEPS)
-
 # -------------------- Clean --------------------
 clean:
 	rm -rf $(OBJ_DIR)
