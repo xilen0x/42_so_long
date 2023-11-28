@@ -14,8 +14,6 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-# include "../libft/getNextLine/get_next_line.h"
-# include "../libft/ft_printf/ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>

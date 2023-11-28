@@ -26,24 +26,18 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	  ft_strjoin.c ft_strtrim.c ft_split.c \
 	  ft_itoa.c ft_strmapi.c ft_striteri.c \
 	  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
-	  ft_putnbr_fd.c getNextLine/get_next_line.c getNextLine/get_next_line_utils.c
-
-SRCBONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
-		   ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-		   ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+	  ft_putnbr_fd.c getNextLine/get_next_line.c getNextLine/get_next_line_utils.c \
+	  ft_printf/ft_printf.c ft_printf/ft_numbers.c ft_printf/ft_words.c \
+	  ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+	  ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+	  ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
-OBJBONUS = $(addprefix $(OBJ_DIR), $(SRCBONUS:.c=.o))
-
 DEPS = $(addsuffix .d, $(basename $(OBJ)))
 MK = mkdir -p
-
 CFLAGS = -Wall -Wextra -Werror
-
 INCLUDE = -I ./
-
 CC = cc
-
 HEADER = libft.h
 
 # -------------------- Rules --------------------
@@ -52,7 +46,7 @@ HEADER = libft.h
 
 #Regla para construir archivos objeto a partir de los archivos fuente .c.
 $(OBJ_DIR)%.o: %.c Makefile
-	@echo "Compiling... $<"
+	@echo "**** Compiling... $<"
 	@$(MK) $(dir $@)
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
 
@@ -62,16 +56,9 @@ all: $(NAME)
 #Regla para construir el archivo de biblioteca principal libft.a utilizando 
 # los archivos objeto y el archivo de encabezado.
 $(NAME): $(OBJ) $(HEADER)
-	@echo "Building... $@"
+	@echo "====================================="
+	@echo "**** Building... $@"
 	ar rcs $(NAME) $(OBJ)
-
-bonus: .bonus
-
-.bonus: $(OBJBONUS)
-		@echo "Building bonus..."
-		ar rcs $(NAME) $(OBJBONUS)
-		@touch .bonus
-
 
 -include $(DEPS)
 
@@ -87,4 +74,4 @@ re: fclean $(NAME)
 #Al declarar estos objetivos como .PHONY, se garantiza que las reglas
 # asociadas se ejecuten independientemente de si hay un archivo con el
 # mismo nombre o no.
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

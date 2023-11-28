@@ -13,11 +13,13 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "../libft.h"
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stddef.h>
 # include <unistd.h>
 # include <stdio.h>
+
 // ------------------ Prototypes ----------------------
 int		ft_printf(char const *str, ...);
 void	ft_putchar_len(char character, int *len);
