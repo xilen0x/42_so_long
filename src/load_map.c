@@ -12,41 +12,81 @@
 
 #include "../include/so_long.h"
 
+/*
+	int		fd;
+	char	*line_result;
+
+	fd = open("only_nl.txt", O_RDONLY);
+	while ((line_result = get_next_line(fd)) != NULL)
+	{
+		printf("%s\n", line_result);
+		free(line_result);
+	}
+	close(fd);
+*/
+
 /**/
-void	create_map(int fd, t_game *game)
+/*void	create_map(int fd, t_game *game)
 {
-	//char	*line;
-	char	*row;
+	char	*line;
+	int		row_count;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	row = get_next_line(fd);
-	game->width = ft_strlen(get_next_line(fd));//n de cols
-	while (row[i])
+	row_count = 0;
+	line = get_next_line(fd);
+	if (!line)
+		write (2, "Invalid map!\n", 13);
+	close(fd);
+	game->width = ft_strlen(line);//n de cols(anchura)
+	while (line != NULL)
 	{
-		row = get_next_line(fd);
-		ft_printf("test ");//entra 2 veces aqui?
-		while (row[i] <= game->width)
+		//ft_printf("%d", i);
+		while (line[i] < game->width)
 		{
-			if (row[i] == '\n')
-				i++;
+			if (line[i] == '\n')
+			{
+				row_count++;
+			}
+			i++;
 		}
 	}
-	game->height = i;//n de rows
-	game->map = (char *)malloc(sizeof(char) * (game->width * game->height));
+	game->height = row_count;//n de rows(altura)
+	game->matrix = (char **)malloc(sizeof(char) * (game->width));
+	i = 0;
 	while (i < game->height)
 	{
 		while (j < game->width)
 		{
-			game->map = get_next_line(fd);
-			ft_printf("%s", game->map);
+			game->matrix[i][j] = get_next_line(fd);
+			//ft_printf("%s", game->map);
 			j++;
 		}
 		i++;
 	}
+}*/
+
+void	create_map(int fd, t_game *game)//funcion q calc. el ancho de la linea, hasta el momento
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = get_next_line(fd);
+	if (!line)
+		write (2, "Invalid map!\n", 13);
+	//game->matrix = (char **)malloc(sizeof(char *) * matrix_size);
+	game->width = ft_strlen(line) - 1;
+	while (line[i])
+		i++;
+	i--;
+	ft_printf("%d", i);
+	close(fd);
 }
+//falta crear otra q calc. el alto(filas) o integrarla con la de arriba
+//game->height = i; //altura o cant. de filas
 
 /*Funcion que abre el mapa en modo lectura y almacena su fd en map_fd*/
 int	open_map(char *av, t_game *game)
