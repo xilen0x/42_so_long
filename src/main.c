@@ -17,25 +17,28 @@
 cc main.c -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 */
 
-/*int	main(void)
-{
-	t_win	my_program;
-
-	my_program = new_program(300, 300, "so_long");
-	if (!my_program.mlx || !my_program.mlx_win)
-		return (1);
-	mlx_loop(my_program.mlx);
-	return (0);
-}*/
-
 int	main(int ac, char *av[])
 {
 	t_game	game;
+	//void *mlx_ptr;
+	//void *win_ptr;
 
 	if (ac == 2)
 	{
 		file_is_ber(av[1]);
+		parsing_map(av[1], &game);
 		open_map(av[1], &game);
+		create_map(game.map_fd, &game);
+		/*mlx_ptr = mlx_init();
+		if (!mlx_ptr)
+			return (1);
+		win_ptr = mlx_new_window(mlx_ptr, 600, 400, "so_long");
+		if (!win_ptr)
+			return (free(mlx_ptr), 1);
+		mlx_destroy_window(mlx_ptr, win_ptr);
+		mlx_destroy_display(mlx_ptr);
+		free(mlx_ptr);
+		*/
 	}
 	else
 		ft_errors(1);

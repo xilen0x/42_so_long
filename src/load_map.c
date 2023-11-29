@@ -79,14 +79,30 @@ void	create_map(int fd, t_game *game)//funcion q calc. el ancho de la linea, has
 		write (2, "Invalid map!\n", 13);
 	//game->matrix = (char **)malloc(sizeof(char *) * matrix_size);
 	game->width = ft_strlen(line) - 1;
-	while (line[i])
+	/*while (line[i])
 		i++;
 	i--;
-	ft_printf("%d", i);
+	ft_printf("%d", i);*/
 	close(fd);
 }
 //falta crear otra q calc. el alto(filas) o integrarla con la de arriba
 //game->height = i; //altura o cant. de filas
+
+int	parsing_map(char *av, t_game *game)
+{
+	/*if (all_collectables_collected && exit_count == 1)
+		return map_valid;
+	if (on_wall)
+		return map_invalid;
+	if (on_collectable)
+		collectables++;
+	if (on_exit)
+		exits++;
+	replace_current_position_with_wall;
+	if (one_of_the_four_adjacent_directions_is_possible)
+		return map_valid;
+	return map_invalid;*/
+}
 
 /*Funcion que abre el mapa en modo lectura y almacena su fd en map_fd*/
 int	open_map(char *av, t_game *game)
@@ -94,6 +110,5 @@ int	open_map(char *av, t_game *game)
 	game->map_fd = open(av, O_RDONLY);
 	if (game->map_fd == -1)
 		ft_errors(2);
-	create_map(game->map_fd, game);
 	return (0);
 }
