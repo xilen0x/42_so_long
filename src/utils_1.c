@@ -60,3 +60,32 @@ void	print_matrix(t_game *game)
 		i++;
 	}
 }
+
+/*int	parsing_map(t_game *game)
+{
+	//es rectangular?
+
+	//esta rodeado de muros?
+
+	//tiene una posicion inicial?
+
+	//tiene al menos un coleccionable?
+
+	//tiene 1 salida(solamente)?
+
+	//tiene un camino valido?
+
+	if (all_collectables_collected && exit_count == 1)
+		return map_valid;
+	if (on_wall)
+		return map_invalid;
+	if (on_collectable)
+		collectables++;
+	if (on_exit)
+		exits++;
+	replace_current_position_with_wall;
+	if (one_of_the_four_adjacent_directions_is_possible)
+		return map_valid;
+	return map_invalid;
+}
+*/

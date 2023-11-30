@@ -29,6 +29,9 @@ int	main(int ac, char *av[])
 		open_map(av[1], &game);
 		create_map(game.map_fd, &game, av[1]);
 
+		// ft_printf("%d", game.width);
+		// ft_printf(" ");
+		// ft_printf("%d", game.height);
 		print_matrix(&game);
 		//parsing_map(&game);
 		/*mlx_ptr = mlx_init();
