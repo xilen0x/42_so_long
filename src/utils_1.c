@@ -41,3 +41,22 @@ int	ft_errors(int n)
 		//write (2, "error", 5);
 	return (1);
 }
+
+/*funcion que imprime la matriz*/
+void	print_matrix(t_game *game)
+{
+	int i = 0;
+	int j = 0;
+
+	while (i < game->height)
+	{
+		j = 0;
+		while (j < game->width)
+		{
+			printf("%c ", game->matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}

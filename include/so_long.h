@@ -22,15 +22,15 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		height;
-	int		width;
-	int		map_fd;
 	char	**matrix;
-}t_game;
+	int		map_fd;
+	int		width;
+	int		height;
+}	t_game;
 
 int		file_is_ber(char *str);
 int		open_map(char *av, t_game *game);
 int		ft_errors(int n);
-void	create_map(int fd, t_game *game);
-
+void	create_map(int fd, t_game *game, char *av);
+void	print_matrix(t_game *game);
 #endif
