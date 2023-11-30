@@ -55,9 +55,38 @@ void	print_matrix(t_game *game)
 	}
 }
 
-/*int	parsing_map(t_game *game)
+int	is_rectangular(t_game *game)
 {
-	//es rectangular?
+	int		i;
+	int		first_row_len;
+	int		curr_row_len;
+
+	i = 0;
+	first_row_len = ft_strlen(game->matrix[i]);
+
+	while (i < game->height)
+	{
+		curr_row_len = ft_strlen(game->matrix[i]);
+		printf("%d\n", curr_row_len);
+		if (curr_row_len != first_row_len)
+			break ;
+		i++;
+	}
+	curr_row_len++;
+	if (curr_row_len != first_row_len)
+	{
+		printf("%d\n", curr_row_len);
+		return (1);
+	}
+	return (0);
+}
+
+int	parsing_map(t_game *game)
+{
+	if (is_rectangular(game) == 0)
+		printf("La matriz es rectangular.\n");
+	else
+		printf("La matriz NO es rectangular.\n");
 
 	//esta rodeado de muros?
 
@@ -69,7 +98,7 @@ void	print_matrix(t_game *game)
 
 	//tiene un camino valido?
 
-	if (all_collectables_collected && exit_count == 1)
+	/*if (all_collectables_collected && exit_count == 1)
 		return map_valid;
 	if (on_wall)
 		return map_invalid;
@@ -80,6 +109,6 @@ void	print_matrix(t_game *game)
 	replace_current_position_with_wall;
 	if (one_of_the_four_adjacent_directions_is_possible)
 		return map_valid;
-	return map_invalid;
+	return map_invalid; */
+	return 0;
 }
-*/

@@ -12,6 +12,7 @@
 
 #include "../include/so_long.h"
 
+/*Funcion que crea y guarda la matriz*/
 void	create_matrix(t_game *game, char *av)
 {
 	int	i;
@@ -19,12 +20,12 @@ void	create_matrix(t_game *game, char *av)
 	i = 0;
 	open_map(av, game);
 	game->matrix = malloc((game->height + 1) * sizeof(char *));
-	game->matrix[game->height] = NULL;
 	while (i < game->height)
 	{
 		game->matrix[i] = get_next_line(game->map_fd);
 		i++;
 	}
+	game->matrix[game->height] = NULL;
 	close(game->map_fd);
 }
 

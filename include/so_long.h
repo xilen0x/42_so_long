@@ -33,4 +33,6 @@ int		open_map(char *av, t_game *game);
 int		ft_errors(int n);
 void	create_map(int fd, t_game *game, char *av);
 void	print_matrix(t_game *game);
+int		parsing_map(t_game *game);
+
 #endif
