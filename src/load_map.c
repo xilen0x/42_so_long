@@ -15,22 +15,14 @@
 void	create_matrix(t_game *game, char *av)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	open_map(av, game);
 	game->matrix = malloc((game->height + 1) * sizeof(char *));
-	while (game->height)
-		game->matrix[i] = malloc(game->width * sizeof(char));
-	//while (game->matrix[i])
+	game->matrix[game->height] = NULL;
 	while (i < game->height)
 	{
-		while (j < game->width)
-		{
-			game->matrix[i] = get_next_line(game->map_fd);
-			j++;
-		}
+		game->matrix[i] = get_next_line(game->map_fd);
 		i++;
 	}
 	close(game->map_fd);
