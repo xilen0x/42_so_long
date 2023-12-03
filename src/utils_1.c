@@ -36,7 +36,7 @@ int	ft_errors(int n)
 	else if (n == 4)
 	{
 		write (2, "Error\n", 6);
-		write (2, "Invalid map file x!\n", 20);
+		write (2, "Invalid x!\n", 11);
 		exit(1);
 	}
 	else
@@ -90,31 +90,54 @@ int	is_surrounded_by_walls(t_game *game)
 	while (game->matrix[0][i] && game->matrix[0][i] != '\n')
 	{
 		if (game->matrix[0][i] != '1')
-			ft_errors(4);
+			ft_errors(3);
 		i++;
 	}
 	i = 0;
 	while (i < game->height)
 	{
 		if (game->matrix[i][0] != '1')
-			ft_errors(4);
+			ft_errors(3);
 		i++;
 	}
 	i = 0;
 	while (i < game->height)
 	{
 		if (game->matrix[i][q_cols - 1] != '1')
-			ft_errors(4);
+			ft_errors(3);
 		i++;
 	}
 	i = 0;
 	while (game->matrix[0][i] && game->matrix[0][i] != '\n')
 	{
 		if (game->matrix[q_rows - 1][i] != '1')
-			ft_errors(4);
+			ft_errors(3);
 		i++;
 	}
 	return (0);
+}
+
+int	is_initial_position(t_game *game)//*******aki voy!!!!!
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < game->height)
+	{
+		//while (j < game->width)
+		//{
+			if (game->matrix[i][j] == 'P')
+			{
+				printf("%c\n", game->matrix[i][j]);
+				return 0;
+			}
+			//j++;
+		//}
+		i++;
+	}
+	return (1);
 }
 
 int	parsing_map(t_game *game)
@@ -125,7 +148,8 @@ int	parsing_map(t_game *game)
 	if (is_surrounded_by_walls(game) != 0)
 		ft_errors(3);
 	//tiene una posicion inicial?
-
+	if (is_initial_position(game) != 0)
+		ft_errors(4);
 	//tiene al menos un coleccionable?
 
 	//tiene 1 salida(solamente)?
