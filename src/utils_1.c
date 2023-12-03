@@ -29,7 +29,8 @@ int	ft_errors(int n)
 	}
 	else if (n == 3)
 	{
-		//write (2, "bash: outfile: Permission denied\n", 33);
+		write (2, "Error\n", 6);
+		write (2, "Invalid map file!\n", 18);
 		exit(1);
 	}
 	else if (n == 4)
@@ -55,28 +56,24 @@ void	print_matrix(t_game *game)
 	}
 }
 
+/*Funcion que verifica si el mapa es rectangular*/
 int	is_rectangular(t_game *game)
 {
 	int		i;
-	int		first_row_len;
 	int		curr_row_len;
+	int		first_row_len;
 
 	i = 0;
+	if (game->width <= 4 || game->width > 34)
+		ft_errors(3);
 	first_row_len = ft_strlen(game->matrix[i]);
-
 	while (i < game->height)
 	{
 		curr_row_len = ft_strlen(game->matrix[i]);
-		printf("%d\n", curr_row_len);
-		if (curr_row_len != first_row_len)
-			break ;
+		//printf("%d\n", curr_row_len);
+		if (first_row_len != (int)ft_strlen(game->matrix[i]))
+			ft_errors(3);
 		i++;
-	}
-	curr_row_len++;
-	if (curr_row_len != first_row_len)
-	{
-		printf("%d\n", curr_row_len);
-		return (1);
 	}
 	return (0);
 }
@@ -85,9 +82,6 @@ int	parsing_map(t_game *game)
 {
 	if (is_rectangular(game) == 0)
 		printf("La matriz es rectangular.\n");
-	else
-		printf("La matriz NO es rectangular.\n");
-
 	//esta rodeado de muros?
 
 	//tiene una posicion inicial?
