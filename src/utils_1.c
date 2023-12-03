@@ -35,7 +35,8 @@ int	ft_errors(int n)
 	}
 	else if (n == 4)
 	{
-		//write (2, "Command not found!\n", 19);
+		write (2, "Error\n", 6);
+		write (2, "Invalid map file x!\n", 20);
 		exit(1);
 	}
 	else
@@ -70,7 +71,6 @@ int	is_rectangular(t_game *game)
 	while (i < game->height)
 	{
 		curr_row_len = ft_strlen(game->matrix[i]);
-		//printf("%d\n", curr_row_len);
 		if (first_row_len != (int)ft_strlen(game->matrix[i]))
 			ft_errors(3);
 		i++;
@@ -78,12 +78,52 @@ int	is_rectangular(t_game *game)
 	return (0);
 }
 
+int	is_surrounded_by_walls(t_game *game)
+{
+	int	i;
+	int	q_rows;
+	int	q_cols;
+
+	i = 0;
+	q_rows = game->height;
+	q_cols = game->width;
+	while (game->matrix[0][i] && game->matrix[0][i] != '\n')
+	{
+		if (game->matrix[0][i] != '1')
+			ft_errors(4);
+		i++;
+	}
+	i = 0;
+	while (i < game->height)
+	{
+		if (game->matrix[i][0] != '1')
+			ft_errors(4);
+		i++;
+	}
+	i = 0;
+	while (i < game->height)
+	{
+		if (game->matrix[i][q_cols - 1] != '1')
+			ft_errors(4);
+		i++;
+	}
+	i = 0;
+	while (game->matrix[0][i] && game->matrix[0][i] != '\n')
+	{
+		if (game->matrix[q_rows - 1][i] != '1')
+			ft_errors(4);
+		i++;
+	}
+	return (0);
+}
+
 int	parsing_map(t_game *game)
 {
-	if (is_rectangular(game) == 0)
-		printf("La matriz es rectangular.\n");
+	if (is_rectangular(game) != 0)
+		ft_errors(3);
 	//esta rodeado de muros?
-
+	if (is_surrounded_by_walls(game) != 0)
+		ft_errors(3);
 	//tiene una posicion inicial?
 
 	//tiene al menos un coleccionable?
