@@ -28,7 +28,6 @@ int	main(int ac, char *av[])
 		file_is_ber(av[1]);
 		open_map(av[1], &game);
 		create_map(game.map_fd, &game, av[1]);
-		//print_matrix(&game);
 		parsing_map(&game);
 		/*mlx_ptr = mlx_init();
 		if (!mlx_ptr)

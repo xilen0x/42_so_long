@@ -28,11 +28,28 @@ typedef struct s_game
 	int		height;
 }	t_game;
 
+typedef struct s_game_copy
+{
+	char	**m2;
+	int		w2;
+	int		h2;
+}	t_copy_game;
+
+typedef struct s_point
+{
+	int			x;
+	int			y;
+}	t_point;
+
 int		file_is_ber(char *str);
 int		open_map(char *av, t_game *game);
 int		ft_errors(int n);
 void	create_map(int fd, t_game *game, char *av);
 void	print_matrix(t_game *game);
 int		parsing_map(t_game *game);
+int		is_rectangular(t_game *game);
+int		is_initial_position(t_game *game);
+int		has_a_valid_path(t_game *game);
+int		has_at_least_one_collectible(t_game *game);
 
 #endif

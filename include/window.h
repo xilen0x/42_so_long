@@ -21,7 +21,7 @@ typedef struct s_win
 	void	*mlx_win;
 	int		height;
 	int		width;
-}t_win;
+}	t_win;
 
 
 #endif
