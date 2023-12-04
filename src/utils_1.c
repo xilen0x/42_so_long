@@ -117,27 +117,29 @@ int	is_surrounded_by_walls(t_game *game)
 	return (0);
 }
 
-int	is_initial_position(t_game *game)//*******aki voy!!!!!
+int	is_initial_position(t_game *game)
 {
 	int	i;
 	int	j;
+	int	count_p;
 
 	i = 0;
 	j = 0;
+	count_p = 0;
 	while (i < game->height)
 	{
-		//while (j < game->width)
-		//{
+		j = 0;
+		while (j < game->width)
+		{
 			if (game->matrix[i][j] == 'P')
 			{
-				printf("%c\n", game->matrix[i][j]);
-				return 0;
+				count_p++;
 			}
-			//j++;
-		//}
+			j++;
+		}
 		i++;
 	}
-	return (1);
+	return (count_p);
 }
 
 int	parsing_map(t_game *game)
@@ -148,7 +150,7 @@ int	parsing_map(t_game *game)
 	if (is_surrounded_by_walls(game) != 0)
 		ft_errors(3);
 	//tiene una posicion inicial?
-	if (is_initial_position(game) != 0)
+	if (is_initial_position(game) != 1)
 		ft_errors(4);
 	//tiene al menos un coleccionable?
 
