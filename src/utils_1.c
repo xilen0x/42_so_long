@@ -36,7 +36,7 @@ int	ft_errors(int n)
 	else if (n == 4)
 	{
 		write (2, "Error\n", 6);
-		write (2, "Invalid x!\n", 11);
+		write (2, "xxxxxxxxx!\n", 11);
 		exit(1);
 	}
 	else
@@ -142,18 +142,41 @@ int	is_initial_position(t_game *game)
 	return (count_p);
 }
 
+int	has_at_least_one_collectible(t_game *game)
+{
+	int	i;
+	int	j;
+	int	count_c;
+
+	i = 0;
+	j = 0;
+	count_c = 0;
+	while (i < game->height)
+	{
+		j = 0;
+		while (j < game->width)
+		{
+			if (game->matrix[i][j] == 'C')
+			{
+				count_c++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (count_c);
+}
+
 int	parsing_map(t_game *game)
 {
 	if (is_rectangular(game) != 0)
 		ft_errors(3);
-	//esta rodeado de muros?
 	if (is_surrounded_by_walls(game) != 0)
 		ft_errors(3);
-	//tiene una posicion inicial?
 	if (is_initial_position(game) != 1)
+		ft_errors(3);
+	if (has_at_least_one_collectible(game) < 1)
 		ft_errors(4);
-	//tiene al menos un coleccionable?
-
 	//tiene 1 salida(solamente)?
 
 	//tiene un camino valido?
