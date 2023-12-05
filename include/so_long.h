@@ -49,7 +49,6 @@ void	create_map(int fd, t_game *game, char *av);
 void	print_matrix(t_game *game);
 void	print_matrix2(t_copy_game *game);
 int		parsing_map(t_game *game);
-int		parsing_map2(t_game *game);
 int		is_rectangular(t_game *game);
 int		is_initial_position(t_game *game);
 int		is_surrounded_by_walls(t_game *game);

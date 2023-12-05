@@ -12,6 +12,35 @@
 
 #include "../include/so_long.h"
 
+int	ft_errors2(int n)
+{
+	if (n == 4)
+	{
+		write (2, "Error\n", 6);
+		write (2, "Invalid route in map!\n", 22);
+		exit(1);
+	}
+	/*else if (n == 5)
+	{
+		write (2, "Error\n", 6);
+		write (2, "It was not possible to open the file\n", 37);
+		exit(1);
+	}
+	else if (n == 6)
+	{
+		write (2, "Error\n", 6);
+		write (2, "Invalid map file!\n", 18);
+		exit(1);
+	}
+	else
+	{
+		write (2, "Error\n", 6);
+		write (2, "otro!\n", 6);
+		exit(1);
+	}*/
+	return (1);
+}
+
 /*Funcion que muestra mensajes de error*/
 int	ft_errors(int n)
 {
@@ -38,34 +67,6 @@ int	ft_errors(int n)
 	return (1);
 }
 
-int	ft_errors2(int n)
-{
-	if (n == 4)
-	{
-		write (2, "Error\n", 6);
-		write (2, "Invalid route in map!\n", 22);
-		exit(1);
-	}
-	else if (n == 5)
-	{
-		write (2, "Error\n", 6);
-		write (2, "It was not possible to open the file\n", 37);
-		exit(1);
-	}
-	else if (n == 6)
-	{
-		write (2, "Error\n", 6);
-		write (2, "Invalid map file!\n", 18);
-		exit(1);
-	}
-	else
-	{
-		write (2, "Error\n", 6);
-		write (2, "otro!\n", 6);
-		exit(1);
-	}
-	return (1);
-}
 
 /*funcion que imprime la matriz*/
 void	print_matrix(t_game *game)

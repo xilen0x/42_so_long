@@ -28,11 +28,6 @@ int	file_is_ber(char *str)
 	}
 }
 
-/*int	parsing_map2(t_game *game)
-{
-	return (0);
-}*/
-
 int	parsing_map(t_game *game)
 {
 	if (is_rectangular(game) != 0)
@@ -49,7 +44,6 @@ int	parsing_map(t_game *game)
 		ft_errors(4);
 	if (valid_path_to_collectables(game) != 0)
 		ft_errors(4);
-	//parsing_map2(game);
 	return (0);
 }
 

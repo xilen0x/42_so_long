@@ -23,5 +23,6 @@ typedef struct s_win
 	int		width;
 }	t_win;
 
+t_win	new_program(int w, int h, char *str);
 
 #endif
