@@ -26,6 +26,7 @@ typedef struct s_game
 	int		map_fd;
 	int		width;
 	int		height;
+	int		collectible;
 }	t_game;
 
 typedef struct s_game_copy
@@ -46,10 +47,13 @@ int		open_map(char *av, t_game *game);
 int		ft_errors(int n);
 void	create_map(int fd, t_game *game, char *av);
 void	print_matrix(t_game *game);
+void	print_matrix2(t_copy_game *game);
 int		parsing_map(t_game *game);
 int		is_rectangular(t_game *game);
 int		is_initial_position(t_game *game);
-int		has_a_valid_path(t_game *game);
-int		has_at_least_one_collectible(t_game *game);
+int		valid_path_to_exit(t_game *game);
+int		valid_path_to_collectables(t_game *game);
+int		q_collectible(t_game *game);
+t_point	find_p(t_copy_game *copy_map);
 
 #endif

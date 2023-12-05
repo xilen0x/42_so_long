@@ -85,27 +85,32 @@ t_point	find_p(t_copy_game *copy_map)
 }
 
 /*Funcion que verifica si hay una ruta valida en el mapa - continuacion*/
-void	fill(char **tab, t_point size, t_point cur, char to_fill)
+void	fill(char **tab, t_point cur, int *exit_found)
 {
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
-		|| tab[cur.y][cur.x] != to_fill)
+	if (tab[cur.y][cur.x] == '1' || tab[cur.y][cur.x] == '*' \
+	|| *exit_found == 1)
 		return ;
-
-	tab[cur.y][cur.x] = 'F';
-	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
+	if (tab[cur.y][cur.x] == 'E')
+		*exit_found = 1;
+	tab[cur.y][cur.x] = '*';
+	if (*exit_found == 0)
+	{
+		fill(tab, (t_point){cur.x - 1, cur.y}, exit_found);
+		fill(tab, (t_point){cur.x + 1, cur.y}, exit_found);
+		fill(tab, (t_point){cur.x, cur.y - 1}, exit_found);
+		fill(tab, (t_point){cur.x, cur.y + 1}, exit_found);
+	}
 }
 
 /*Funcion que verifica si hay una ruta valida en el mapa*/
-int	has_a_valid_path(t_game *game)
+int	valid_path_to_exit(t_game *game)
 {
 	int			i;
-	t_point		size;
+	int			exit_found;
 	t_point		p_loc;
 	t_copy_game	copy_map;
 
+	exit_found = 0;
 	copy_map.w2 = game->width;
 	copy_map.h2 = game->height;
 	copy_map.m2 = malloc((game->height + 1) * sizeof(char *));
@@ -116,8 +121,7 @@ int	has_a_valid_path(t_game *game)
 		i++;
 	}
 	p_loc = find_p(&copy_map);
-	size.x = p_loc.x;
-	size.y = p_loc.y;
-	fill(copy_map.m2, size, p_loc, 0);
-	return (0);
+	fill(copy_map.m2, p_loc, &exit_found);
+	//print_matrix2(&copy_map);
+	return (exit_found);
 }

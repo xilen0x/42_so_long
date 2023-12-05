@@ -33,14 +33,12 @@ int	ft_errors(int n)
 		write (2, "Invalid map file!\n", 18);
 		exit(1);
 	}
-	else if (n == 4)
+	else
 	{
 		write (2, "Error\n", 6);
-		write (2, "xxxxxxxxx!\n", 11);
+		write (2, "otro!\n", 6);
 		exit(1);
 	}
-	else
-		write (2, "Error\n", 6);
 	return (1);
 }
 
@@ -53,6 +51,19 @@ void	print_matrix(t_game *game)
 	while (i < game->height)
 	{
 		ft_printf("%s", game->matrix[i]);
+		i++;
+	}
+}
+
+/*funcion que imprime la matriz copia*/
+void	print_matrix2(t_copy_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->h2)
+	{
+		ft_printf("%s", game->m2[i]);
 		i++;
 	}
 }

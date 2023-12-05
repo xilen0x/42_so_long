@@ -61,7 +61,7 @@ int	is_surrounded_by_walls(t_game *game)
 	return (0);
 }
 
-int	has_at_least_one_collectible(t_game *game)
+int	q_collectible(t_game *game)
 {
 	int	i;
 	int	j;
@@ -83,6 +83,7 @@ int	has_at_least_one_collectible(t_game *game)
 		}
 		i++;
 	}
+	game->collectible = count_c;
 	return (count_c);
 }
 
@@ -119,11 +120,13 @@ int	parsing_map(t_game *game)
 		ft_errors(3);
 	if (is_initial_position(game) != 1)
 		ft_errors(3);
-	if (has_at_least_one_collectible(game) < 1)
+	if (q_collectible(game) < 1)
 		ft_errors(3);
 	if (has_only_one_exit(game) != 1)
 		ft_errors(3);
-	if (has_a_valid_path(game) == 0)//aki voy, me da error en ambos casos
+	if (valid_path_to_exit(game) == 0)
+		ft_errors(3);
+	if (valid_path_to_collectables(game) != 0)
 		ft_errors(4);
 	return (0);
 }
