@@ -85,20 +85,20 @@ t_point	find_p(t_copy_game *copy_map)
 }
 
 /*Funcion que verifica si hay una ruta valida en el mapa - continuacion*/
-void	fill(char **tab, t_point cur, int *exit_found)
+void	fill(char **map, t_point cur, int *exit_found)
 {
-	if (tab[cur.y][cur.x] == '1' || tab[cur.y][cur.x] == '*' \
+	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == '*' \
 	|| *exit_found == 1)
 		return ;
-	if (tab[cur.y][cur.x] == 'E')
+	if (map[cur.y][cur.x] == 'E')
 		*exit_found = 1;
-	tab[cur.y][cur.x] = '*';
+	map[cur.y][cur.x] = '*';
 	if (*exit_found == 0)
 	{
-		fill(tab, (t_point){cur.x - 1, cur.y}, exit_found);
-		fill(tab, (t_point){cur.x + 1, cur.y}, exit_found);
-		fill(tab, (t_point){cur.x, cur.y - 1}, exit_found);
-		fill(tab, (t_point){cur.x, cur.y + 1}, exit_found);
+		fill(map, (t_point){cur.x - 1, cur.y}, exit_found);
+		fill(map, (t_point){cur.x + 1, cur.y}, exit_found);
+		fill(map, (t_point){cur.x, cur.y - 1}, exit_found);
+		fill(map, (t_point){cur.x, cur.y + 1}, exit_found);
 	}
 }
 
