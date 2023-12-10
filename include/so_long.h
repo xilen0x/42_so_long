@@ -96,8 +96,8 @@ int		valid_path_to_exit(t_game *game);
 int		valid_path_to_collectables(t_game *game);
 int		q_collectible(t_game *game);
 t_point	find_p(t_copy_game *copy_map);
-void	set_game(t_game *game);
-void	set_img(t_game *game, char dir);
+void	set_images(t_game *game);
+void	set_images_to_win(t_game *game, char dir);
 void	init_minilibx(t_game *game);
 
 int		on_keypress(int keysym);

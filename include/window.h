@@ -27,6 +27,6 @@
 # define KEY_DOWN				125
 # define KEY_LEFT				123
 # define KEY_RIGHT				124
-# define IMG_PX 				50
+# define IMG_PXL 				50
 
 #endif
