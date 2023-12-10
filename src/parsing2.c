@@ -22,10 +22,10 @@ int	is_initial_position(t_game *game)
 	i = 0;
 	j = 0;
 	count_p = 0;
-	while (i < game->height)
+	while (i < game->h)
 	{
 		j = 0;
-		while (j < game->width)
+		while (j < game->w)
 		{
 			if (game->matrix[i][j] == 'P')
 			{
@@ -46,10 +46,10 @@ int	is_rectangular(t_game *game)
 	int		first_row_len;
 
 	i = 0;
-	if (game->width <= 4 || game->width > 34)
+	if (game->w <= 4 || game->w > 34)
 		ft_errors(3);
 	first_row_len = ft_strlen(game->matrix[i]);
-	while (i < game->height)
+	while (i < game->h)
 	{
 		curr_row_len = ft_strlen(game->matrix[i]);
 		if (first_row_len != (int)ft_strlen(game->matrix[i]))
@@ -111,9 +111,9 @@ int	valid_path_to_exit(t_game *game)
 	t_copy_game	copy_map;
 
 	exit_found = 0;
-	copy_map.w2 = game->width;
-	copy_map.h2 = game->height;
-	copy_map.m2 = malloc((game->height + 1) * sizeof(char *));
+	copy_map.w2 = game->w;
+	copy_map.h2 = game->h;
+	copy_map.m2 = malloc((game->h + 1) * sizeof(char *));
 	i = 0;
 	while (game->matrix[i])
 	{

@@ -20,13 +20,13 @@ int	ft_errors2(int n)
 		write (2, "Invalid route in map!\n", 22);
 		exit(1);
 	}
-	/*else if (n == 5)
+	else if (n == 5)
 	{
 		write (2, "Error\n", 6);
-		write (2, "It was not possible to open the file\n", 37);
+		write (2, "It was not possible to initialize the program!\n", 47);
 		exit(1);
 	}
-	else if (n == 6)
+	/*else if (n == 6)
 	{
 		write (2, "Error\n", 6);
 		write (2, "Invalid map file!\n", 18);
@@ -74,7 +74,7 @@ void	print_matrix(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < game->height)
+	while (i < game->h)
 	{
 		ft_printf("%s", game->matrix[i]);
 		i++;

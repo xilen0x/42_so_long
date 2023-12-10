@@ -20,6 +20,7 @@ cc main.c -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 int	main(int ac, char *av[])
 {
 	t_game	game;
+	t_win	win;
 
 	if (ac == 2)
 	{
@@ -27,17 +28,14 @@ int	main(int ac, char *av[])
 		open_map(av[1], &game);
 		create_map(game.map_fd, &game, av[1]);
 		parsing_map(&game);
-		mlx = new_program(game.width, game.height, "so_long");//*****AKI VOY! TRATANDO DE GUARDAR LA FUNCION Q CREA LA VENTANA
-		if (!mlx)
-			return (1);
-		/*win_ptr = mlx_new_window(mlx_ptr, 600, 400, "so_long");
-		if (!win_ptr)
-			return (free(mlx_ptr), 1);
+		win = set_game(&game);
+		set_img(&game, 'w');
+		//set_imgs(&win);
 		//mlx_destroy_window(mlx_ptr, win_ptr);
 		//mlx_destroy_display(mlx_ptr);
-		*/
-		mlx_loop(mlx);
-		free(mlx);
+
+		mlx_loop(win.mlx);
+		free(set_game);
 	}
 	else
 		ft_errors(1);

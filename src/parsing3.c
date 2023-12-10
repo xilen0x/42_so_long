@@ -41,7 +41,7 @@ int	valid_path_to_collectables(t_game *game)
 	int			collectible;
 
 	i = 0;
-	copy_map.m2 = malloc((game->height + 1) * sizeof(char *));
+	copy_map.m2 = malloc((game->h + 1) * sizeof(char *));
 	while (game->matrix[i])
 	{
 		copy_map.m2[i] = ft_strdup(game->matrix[i]);

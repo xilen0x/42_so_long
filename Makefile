@@ -11,7 +11,7 @@ MLX = $(addprefix $(MLX_DIR), $(MLX_FILE))
 
 SRCS_DIR = src/
 SRC_FILES =	 main.c checks.c load_map.c utils_1.c parsing1.c parsing2.c \
-			parsing3.c
+			parsing3.c window.c
 
 OBJS_DIR =	objs/
 OBJ_FILES = $(SRC_FILES:.c=.o)

@@ -24,8 +24,8 @@ typedef struct s_game
 	void	*mlx_win;
 	char	**matrix;
 	int		map_fd;
-	int		width;
-	int		height;
+	int		w;
+	int		h;
 	int		collectible;
 }	t_game;
 
@@ -45,6 +45,7 @@ typedef struct s_point
 int		file_is_ber(char *str);
 int		open_map(char *av, t_game *game);
 int		ft_errors(int n);
+int		ft_errors2(int n);
 void	create_map(int fd, t_game *game, char *av);
 void	print_matrix(t_game *game);
 void	print_matrix2(t_copy_game *game);

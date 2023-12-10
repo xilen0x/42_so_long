@@ -18,7 +18,7 @@ int	is_surrounded_by_walls2(t_game *game, int q_cols, int q_rows)
 	int	i;
 
 	i = 0;
-	while (i < game->height)
+	while (i < game->h)
 	{
 		if (game->matrix[i][q_cols - 1] != '1')
 			ft_errors(3);
@@ -42,8 +42,8 @@ int	is_surrounded_by_walls(t_game *game)
 	int	q_cols;
 
 	i = 0;
-	q_rows = game->height;
-	q_cols = game->width;
+	q_rows = game->h;
+	q_cols = game->w;
 	while (game->matrix[0][i] && game->matrix[0][i] != '\n')
 	{
 		if (game->matrix[0][i] != '1')
@@ -51,7 +51,7 @@ int	is_surrounded_by_walls(t_game *game)
 		i++;
 	}
 	i = 0;
-	while (i < game->height)
+	while (i < game->h)
 	{
 		if (game->matrix[i][0] != '1')
 			ft_errors(3);
@@ -70,10 +70,10 @@ int	q_collectible(t_game *game)
 	i = 0;
 	j = 0;
 	count_c = 0;
-	while (i < game->height)
+	while (i < game->h)
 	{
 		j = 0;
-		while (j < game->width)
+		while (j < game->w)
 		{
 			if (game->matrix[i][j] == 'C')
 			{
@@ -96,10 +96,10 @@ int	has_only_one_exit(t_game *game)
 	i = 0;
 	j = 0;
 	count_e = 0;
-	while (i < game->height)
+	while (i < game->h)
 	{
 		j = 0;
-		while (j < game->width)
+		while (j < game->w)
 		{
 			if (game->matrix[i][j] == 'E')
 			{
