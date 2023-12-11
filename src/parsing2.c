@@ -22,19 +22,22 @@ int	is_initial_position(t_game *game)
 	x = 0;
 	y = 0;
 	count_p = 0;
-	while (x < game->h)
+	while (y < game->h)
 	{
-		y = 0;
-		while (y < game->w)
+		x = 0;
+		while (x < game->w)
 		{
+			write (1, "ok", 2);
 			if (game->matrix[y][x] == 'P')
 			{
+				write (1, "ok2", 3);
 				count_p++;
 			}
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
+	write (1, "ok3", 2);
 	return (count_p);
 }
 

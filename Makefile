@@ -18,7 +18,7 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJ_FILES))
 DEPS        := $(OBJS:.o=.d)
 CC = clang -g
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize='address'
 MLXFLAGS = -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 AR = ar rc

@@ -80,11 +80,11 @@ void	set_images_to_win(t_game *g, char dir)
 	int		x;
 	int		y;
 
-	x = 0;
-	while (x < g->h)
+	y = 0;
+	while (y < g->h)
 	{
-		y = 0;
-		while (y < g->w)
+		x = 0;
+		while (x < g->w)
 		{
 			if (g->matrix[y][x] == '1')
 				mlx_put_image_to_window(g->mlx, \
@@ -104,9 +104,9 @@ void	set_images_to_win(t_game *g, char dir)
 			else
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.floor, y * 32, x * 32);
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 }
 
@@ -117,6 +117,6 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_errors2(5);
-	game->mlx_win = mlx_new_window(game->mlx, game->w * TILE_PXL, \
-	game->h * TILE_PXL, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx, game->h * TILE_PXL, \
+	game->w * TILE_PXL, "so_long");
 }

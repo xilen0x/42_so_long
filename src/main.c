@@ -27,11 +27,11 @@ int	main(int ac, char *av[])
 		open_map(av[1], &game);
 		create_map(game.map_fd, &game, av[1]);
 		parsing_map(&game);
-		/*init_game(&game);
+		init_game(&game);
 		set_images(&game);
  		set_images_to_win(&game, 'w');
 
-		mlx_loop(game.mlx);*/
+		mlx_loop(game.mlx);
 		//free(set_game);
 	}
 	else
