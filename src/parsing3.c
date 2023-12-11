@@ -37,19 +37,19 @@ int	valid_path_to_collectables(t_game *game)
 {
 	int			i;
 	t_point		p_loc;
-	t_copy_game	copy_map;
+	t_game		copy_map;
 	int			collectible;
 
 	i = 0;
-	copy_map.m2 = malloc((game->h + 1) * sizeof(char *));
+	copy_map.matrix = malloc(sizeof(char *) * (game->h + 1));
 	while (game->matrix[i])
 	{
-		copy_map.m2[i] = ft_strdup(game->matrix[i]);
+		copy_map.matrix[i] = ft_strdup(game->matrix[i]);
 		i++;
 	}
 	p_loc = find_p(&copy_map);
-	collectible = fill2(copy_map.m2, p_loc, &game->collectible);
-	//print_matrix2(&copy_map);
+	collectible = fill2(copy_map.matrix, p_loc, &game->collectible);
+	//print_matrix(&copy_map);
 	return (collectible);
 }
 

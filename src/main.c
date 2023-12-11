@@ -20,30 +20,18 @@ cc main.c -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 int	main(int ac, char *av[])
 {
 	t_game	game;
-	//t_win	win;
-	//t_img	image;
-	
+
 	if (ac == 2)
 	{
 		file_is_ber(av[1]);
 		open_map(av[1], &game);
 		create_map(game.map_fd, &game, av[1]);
 		parsing_map(&game);
-		init_minilibx(&game);
+		/*init_game(&game);
 		set_images(&game);
- 		set_images_to_win(&game, 'w');//segmentation fault
+ 		set_images_to_win(&game, 'w');
 
-		// Register key release hook
-		//mlx_hook(game.mlx, X_EVENT_KEY_RELEASE, 0, &on_keypress, &game);
-
-		// Register destroy hook
-		//mlx_hook(game.mlx, X_EVENT_KEY_EXIT, 0, &exit_game, &game);
-
-		//set_imgs(&win);
-		//mlx_destroy_window(mlx_ptr, win_ptr);
-		//mlx_destroy_display(mlx_ptr);
-
-		mlx_loop(game.mlx);
+		mlx_loop(game.mlx);*/
 		//free(set_game);
 	}
 	else

@@ -14,21 +14,47 @@
 #include "../include/so_long.h"
 #include "../include/window.h"
 
-int	on_keypress(int keysym)
+int	exit_game(t_game *g)
+{
+	write (1, "GAME OVER!\n", 11);
+	mlx_destroy_window(g->mlx, g->mlx_win);
+	free(g->mlx);
+	exit(0);
+}
+
+/*int	on_keypress(int keysym)
 {
 	printf("Pressed key: %d\\n", keysym);
 	return (0);
-}
+}*/
+
+// function that you want to call evety time you exit the game
+/*int	on_destroy(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->mlx_win);
+	//mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(0);
+	return (0);
+}*/
+
+/*int	key_hook(int keycode, t_game *game)
+{
+	if (keycode == 65307)
+		//on_destroy(game);
+		exit_game(game);
+	return (0);
+}*/
 
 /*Funcion que setea las imgs*/
 void	set_images(t_game *g)
 {
 	int	x;
 
-	x = IMG_PXL;
+	x = TILE_PXL;
 	g->imgs.wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall.xpm", &x, &x);
 	g->imgs.floor = mlx_xpm_file_to_image(g->mlx, "./textures/floor.xpm", &x, &x);
-	g->imgs.cols = mlx_xpm_file_to_image(g->mlx, "./textures/cols.xpm", &x, &x);
+	g->imgs.coll = mlx_xpm_file_to_image(g->mlx, "./textures/coll.xpm", &x, &x);
 	g->imgs.exit = mlx_xpm_file_to_image(g->mlx, "./textures/exit.xpm", &x, &x);
 	g->imgs.open = mlx_xpm_file_to_image(g->mlx, "./textures/open.xpm", &x, &x);
 	g->imgs.player.player_up = mlx_xpm_file_to_image(g->mlx, "./textures/player_up.xpm", &x, &x);
@@ -51,52 +77,46 @@ void	set_player(t_game *g, int w, int h, char dir)
 
 void	set_images_to_win(t_game *g, char dir)
 {
-	int		i;
-	int		j;
+	int		x;
+	int		y;
 
-	i = 0;
-	while (i < g->h)
+	x = 0;
+	while (x < g->h)
 	{
-		j = 0;
-		while (j < g->w)
+		y = 0;
+		while (y < g->w)
 		{
-			if (g->matrix[j][i] == '1')
+			if (g->matrix[y][x] == '1')
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.wall, j * 32, i * 32);
+						g->mlx_win, g->imgs.wall, y * 32, x * 32);
 
-			else if (g->matrix[j][i] == 'C')
+			else if (g->matrix[y][x] == 'C')
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.cols, g->w * j, g->h * i);
+						g->mlx_win, g->imgs.coll, y * 32, x * 32);
 
-			else if (g->matrix[j][i] == 'P')
-				set_player(g, g->w, g->h, dir);
+			else if (g->matrix[y][x] == 'P')
+				set_player(g, y, x, dir);
 
-			else if (g->matrix[j][i] == 'E')
+			else if (g->matrix[y][x] == 'E')
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.exit, g->w * j, g->h * i);
+						g->mlx_win, g->imgs.exit, y * 32, x * 32);
 
 			else
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.floor, g->w * j, g->h * i);
-			j++;
+						g->mlx_win, g->imgs.floor, y * 32, x * 32);
+			y++;
 		}
-		i++;
+		x++;
 	}
 }
 
-int	exit_game(t_game *g)
-{
-	ft_printf("GAME OVER!\n");
-	mlx_destroy_window(g->mlx, g->mlx_win);
-	exit(0);
-}
 
 /*Funcion que inicializa minilibx, crea una ventana*/
-void	init_minilibx(t_game *game)
+void	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_errors2(5);
-	game->mlx_win = mlx_new_window(game->mlx, game->w * IMG_PXL, \
-	game->h * IMG_PXL, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx, game->w * TILE_PXL, \
+	game->h * TILE_PXL, "so_long");
 }

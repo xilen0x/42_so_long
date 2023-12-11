@@ -19,7 +19,7 @@ void	create_matrix(t_game *game, char *av)
 
 	i = 0;
 	open_map(av, game);
-	game->matrix = malloc((game->h + 1) * sizeof(char *));
+	game->matrix = malloc(sizeof(char *) * (game->h + 1));
 	while (i < game->h)
 	{
 		game->matrix[i] = get_next_line(game->map_fd);
@@ -32,25 +32,20 @@ void	create_matrix(t_game *game, char *av)
 /*Funcion que calcula las columnas & filas*/
 void	create_map(int fd, t_game *game, char *av)
 {
-	int		i;
-	int		j;
 	char	*line;
 	int		row_count;
 
-	i = 0;
-	j = 0;
 	line = get_next_line(fd);
 	if (!line)
 		write (2, "Invalid map!\n", 13);
 	game->w = ft_strlen(line) - 1;
-	row_count = 0;
+	row_count = 1;
 	while (line)
 	{
-		row_count++;
+		game->h = row_count++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	game->h = row_count;
 	close(fd);
 	create_matrix(game, av);
 }

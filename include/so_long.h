@@ -18,12 +18,12 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef struct s_game_copy
+/*typedef struct s_game_copy
 {
 	char	**m2;
 	int		w2;
 	int		h2;
-}	t_copy_game;
+}	t_copy_game;*/
 
 typedef struct s_point
 {
@@ -43,7 +43,7 @@ typedef struct s_img
 {
 	void		*wall;
 	void		*floor;
-	void		*cols;
+	void		*coll;
 	void		*exit;
 	void		*open;
 	t_player	player;
@@ -86,7 +86,7 @@ int		ft_errors(int n);
 int		ft_errors2(int n);
 void	create_map(int fd, t_game *game, char *av);
 void	print_matrix(t_game *game);
-void	print_matrix2(t_copy_game *game);
+//void	print_matrix2(t_game *game);
 int		parsing_map(t_game *game);
 int		is_rectangular(t_game *game);
 int		is_initial_position(t_game *game);
@@ -95,12 +95,16 @@ int		has_only_one_exit(t_game *game);
 int		valid_path_to_exit(t_game *game);
 int		valid_path_to_collectables(t_game *game);
 int		q_collectible(t_game *game);
-t_point	find_p(t_copy_game *copy_map);
+t_point	find_p(t_game *copy_map);
 void	set_images(t_game *game);
 void	set_images_to_win(t_game *game, char dir);
-void	init_minilibx(t_game *game);
+void	init_game(t_game *game);
 
-int		on_keypress(int keysym);
-int		exit_game(t_game *g);
+//int		on_keypress(int keysym);
+//int		exit_game(t_game *g);
+
+//int	on_destroy(t_game *game);
+//int	key_hook(int keycode, t_game *game);
+
 
 #endif

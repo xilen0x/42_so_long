@@ -12,28 +12,28 @@
 
 #include "../include/so_long.h"
 
-/*Funcion que cuenta la cantidad de P en la mapa*/
+/*Funcion que cuenta la cantidad de P en el mapa*/
 int	is_initial_position(t_game *game)
 {
-	int	i;
-	int	j;
-	int	count_p;
+	int		x;
+	int		y;
+	int		count_p;
 
-	i = 0;
-	j = 0;
+	x = 0;
+	y = 0;
 	count_p = 0;
-	while (i < game->h)
+	while (x < game->h)
 	{
-		j = 0;
-		while (j < game->w)
+		y = 0;
+		while (y < game->w)
 		{
-			if (game->matrix[i][j] == 'P')
+			if (game->matrix[y][x] == 'P')
 			{
 				count_p++;
 			}
-			j++;
+			y++;
 		}
-		i++;
+		x++;
 	}
 	return (count_p);
 }
@@ -59,27 +59,27 @@ int	is_rectangular(t_game *game)
 	return (0);
 }
 
-t_point	find_p(t_copy_game *copy_map)
+t_point	find_p(t_game *copy_map)
 {
-	int		i;
-	int		j;
+	int		x;
+	int		y;
 	t_point	coord;
 
-	i = 0;
-	while (i < copy_map->h2)
+	x = 0;
+	while (x < copy_map->h)
 	{
-		j = 0;
-		while (j < copy_map->w2)
+		y = 0;
+		while (y < copy_map->w)
 		{
-			if (copy_map->m2[i][j] == 'P')
+			if (copy_map->matrix[y][x] == 'P')
 			{
-				coord.x = i;
-				coord.y = j;
+				coord.x = x;
+				coord.y = y;
 				break ;
 			}
-			j++;
+			y++;
 		}
-		i++;
+		x++;
 	}
 	return (coord);
 }
@@ -108,20 +108,20 @@ int	valid_path_to_exit(t_game *game)
 	int			i;
 	int			exit_found;
 	t_point		p_loc;
-	t_copy_game	copy_map;
+	t_game		copy_map;
 
 	exit_found = 0;
-	copy_map.w2 = game->w;
-	copy_map.h2 = game->h;
-	copy_map.m2 = malloc((game->h + 1) * sizeof(char *));
+	copy_map.w = game->w;
+	copy_map.h = game->h;
+	copy_map.matrix = malloc(sizeof(char *) * (game->h + 1));
 	i = 0;
-	while (game->matrix[i])
+	while (i < game->h)
 	{
-		copy_map.m2[i] = ft_strdup(game->matrix[i]);
+		copy_map.matrix[i] = ft_strdup(game->matrix[i]);
 		i++;
 	}
 	p_loc = find_p(&copy_map);
-	fill(copy_map.m2, p_loc, &exit_found);
-	//print_matrix2(&copy_map);
+	fill(copy_map.matrix, p_loc, &exit_found);
+	print_matrix(&copy_map);
 	return (exit_found);
 }
