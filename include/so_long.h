@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+#include "../mlx/mlx.h"
 
 /*typedef struct s_game_copy
 {
@@ -100,6 +101,8 @@ void	set_images(t_game *game);
 void	set_images_to_win(t_game *game, char dir);
 void	init_game(t_game *game);
 
+int		press_key(int keycode, t_game *game);
+void	move_w(t_game *g);
 //int		on_keypress(int keysym);
 //int		exit_game(t_game *g);
 

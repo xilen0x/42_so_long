@@ -14,6 +14,7 @@
 # define WINDOW_H
 
 # include <unistd.h>
+#include "../mlx/mlx.h"
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3

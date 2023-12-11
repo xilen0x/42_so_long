@@ -14,14 +14,6 @@
 #include "../include/so_long.h"
 #include "../include/window.h"
 
-int	exit_game(t_game *g)
-{
-	write (1, "GAME OVER!\n", 11);
-	mlx_destroy_window(g->mlx, g->mlx_win);
-	free(g->mlx);
-	exit(0);
-}
-
 /*int	on_keypress(int keysym)
 {
 	printf("Pressed key: %d\\n", keysym);
