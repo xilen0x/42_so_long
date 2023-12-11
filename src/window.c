@@ -63,22 +63,22 @@ void	set_images(t_game *g)
 	g->imgs.player.player_left = mlx_xpm_file_to_image(g->mlx, "./textures/player_left.xpm", &x, &x);
 }
 
-void	set_player(t_game *g, int w, int h, char dir)
+void	set_player(t_game *g, int y, int x, char dir)
 {
 	if (dir == 'w')
-		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_up, w * 32, h * 32);
+		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_up, y * 32, x * 32);
 	if (dir == 'a')
-		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_left, w * 32, h * 32);
+		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_left, y * 32, x * 32);
 	if (dir == 's')
-		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_down, w * 32, h * 32);
+		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_down, y * 32, x * 32);
 	if (dir == 'd')
-		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_right, w * 32, h * 32);
+		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_right, y * 32, x * 32);
 }
 
 void	set_images_to_win(t_game *g, char dir)
 {
-	int		x;
 	int		y;
+	int		x;
 
 	y = 0;
 	while (y < g->h)
@@ -88,22 +88,22 @@ void	set_images_to_win(t_game *g, char dir)
 		{
 			if (g->matrix[y][x] == '1')
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.wall, y * 32, x * 32);
+						g->mlx_win, g->imgs.wall, x * 32, y * 32);
 
 			else if (g->matrix[y][x] == 'C')
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.coll, y * 32, x * 32);
+						g->mlx_win, g->imgs.coll, x * 32, y * 32);
 
 			else if (g->matrix[y][x] == 'P')
-				set_player(g, y, x, dir);
+				set_player(g, x, y, dir);
 
 			else if (g->matrix[y][x] == 'E')
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.exit, y * 32, x * 32);
+						g->mlx_win, g->imgs.exit, x * 32, y * 32);
 
 			else
 				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.floor, y * 32, x * 32);
+						g->mlx_win, g->imgs.floor, x * 32, y * 32);
 			x++;
 		}
 		y++;
@@ -117,6 +117,7 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_errors2(5);
-	game->mlx_win = mlx_new_window(game->mlx, game->h * TILE_PXL, \
-	game->w * TILE_PXL, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx, game->w * TILE_PXL, \
+	game->h * TILE_PXL, "so_long");
+	//printf("W: %d\n H: %d", game->w, game->h);
 }

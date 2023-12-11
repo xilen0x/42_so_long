@@ -15,12 +15,12 @@
 /*Funcion que verifica si hay una ruta valida para todos los coleccionables-2*/
 int	fill2(char **map, t_point cur, int *collectible)
 {
-	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'x' \
+	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == '*' \
 	|| map[cur.y][cur.x] == 'E')
 		return (1);
 	if (map[cur.y][cur.x] == 'C')
 		(*collectible)--;
-	map[cur.y][cur.x] = 'x';
+	map[cur.y][cur.x] = '*';
 	if (*collectible > 0)
 	{
 		fill2(map, (t_point){cur.x - 1, cur.y}, collectible);

@@ -63,25 +63,25 @@ int	is_surrounded_by_walls(t_game *game)
 
 int	q_collectible(t_game *game)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 	int	count_c;
 
-	i = 0;
-	j = 0;
+	y = 0;
+	x = 0;
 	count_c = 0;
-	while (i < game->h)
+	while (y < game->h)
 	{
-		j = 0;
-		while (j < game->w)
+		x = 0;
+		while (x < game->w)
 		{
-			if (game->matrix[i][j] == 'C')
+			if (game->matrix[y][x] == 'C')
 			{
 				count_c++;
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	game->collectible = count_c;
 	return (count_c);
@@ -89,25 +89,25 @@ int	q_collectible(t_game *game)
 
 int	has_only_one_exit(t_game *game)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 	int	count_e;
 
-	i = 0;
-	j = 0;
+	y = 0;
+	x = 0;
 	count_e = 0;
-	while (i < game->h)
+	while (y < game->h)
 	{
-		j = 0;
-		while (j < game->w)
+		x = 0;
+		while (x < game->w)
 		{
-			if (game->matrix[i][j] == 'E')
+			if (game->matrix[y][x] == 'E')
 			{
 				count_e++;
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return (count_e);
 }

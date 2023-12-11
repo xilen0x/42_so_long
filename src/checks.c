@@ -36,15 +36,15 @@ int	parsing_map(t_game *game)
 		ft_errors(3);
 	if (is_initial_position(game) != 1)
 		ft_errors(3);
-	/*if (q_collectible(game) < 1)
+	if (q_collectible(game) < 1)
 		ft_errors(3);
 	if (has_only_one_exit(game) != 1)
 		ft_errors(3);
 	if (valid_path_to_exit(game) == 0)
 		ft_errors(4);
 	if (valid_path_to_collectables(game) != 0)
-		ft_errors(4);*/
-	print_matrix(game);
+		ft_errors(4);
+	//print_matrix(game);
 	return (0);
 }
 

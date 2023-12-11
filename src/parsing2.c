@@ -15,29 +15,26 @@
 /*Funcion que cuenta la cantidad de P en el mapa*/
 int	is_initial_position(t_game *game)
 {
-	int		x;
 	int		y;
+	int		x;
 	int		count_p;
 
-	x = 0;
 	y = 0;
+	x = 0;
 	count_p = 0;
 	while (y < game->h)
 	{
 		x = 0;
 		while (x < game->w)
 		{
-			write (1, "ok", 2);
 			if (game->matrix[y][x] == 'P')
 			{
-				write (1, "ok2", 3);
 				count_p++;
 			}
 			x++;
 		}
 		y++;
 	}
-	write (1, "ok3", 2);
 	return (count_p);
 }
 
@@ -64,15 +61,15 @@ int	is_rectangular(t_game *game)
 
 t_point	find_p(t_game *copy_map)
 {
-	int		x;
 	int		y;
+	int		x;
 	t_point	coord;
 
-	x = 0;
-	while (x < copy_map->h)
+	y = 0;
+	while (y < copy_map->h)
 	{
-		y = 0;
-		while (y < copy_map->w)
+		x = 0;
+		while (x < copy_map->w)
 		{
 			if (copy_map->matrix[y][x] == 'P')
 			{
@@ -80,9 +77,9 @@ t_point	find_p(t_game *copy_map)
 				coord.y = y;
 				break ;
 			}
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	return (coord);
 }
@@ -125,6 +122,6 @@ int	valid_path_to_exit(t_game *game)
 	}
 	p_loc = find_p(&copy_map);
 	fill(copy_map.matrix, p_loc, &exit_found);
-	print_matrix(&copy_map);
+	//print_matrix(&copy_map);
 	return (exit_found);
 }

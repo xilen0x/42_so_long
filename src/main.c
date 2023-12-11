@@ -30,7 +30,16 @@ int	main(int ac, char *av[])
 		init_game(&game);
 		set_images(&game);
  		set_images_to_win(&game, 'w');
+        //mlx_key_hook(game.mlx_win, key_hook, &game);
+        
+		// Register destroy hook
+		//mlx_hook(game.mlx, X_EVENT_KEY_RELEASE, 0, &on_keypress, &game);
+        //mlx_hook(game.mlx_win, X_EVENT_KEY_EXIT, 0, on_destroy, &game);
+        //mlx_hook(game.mlx, X_EVENT_KEY_EXIT, 0, &exit_game, &game);
 
+        //set_imgs(&win);
+        //mlx_destroy_window(mlx_ptr, win_ptr);
+        //mlx_destroy_display(mlx_ptr);
 		mlx_loop(game.mlx);
 		//free(set_game);
 	}
