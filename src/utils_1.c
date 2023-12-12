@@ -80,17 +80,3 @@ void	print_matrix(t_game *game)
 		i++;
 	}
 }
-
-/*funcion que imprime la matriz copia*/
-/*void	print_matrix2(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < game->h)
-	{
-		ft_printf("%s", game->matrix[i]);
-		i++;
-	}
-}
-*/

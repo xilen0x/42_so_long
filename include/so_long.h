@@ -19,13 +19,6 @@
 # include <fcntl.h>
 #include "../mlx/mlx.h"
 
-/*typedef struct s_game_copy
-{
-	char	**m2;
-	int		w2;
-	int		h2;
-}	t_copy_game;*/
-
 typedef struct s_point
 {
 	int			x;
@@ -53,16 +46,8 @@ typedef struct s_img
 	void		*img_ptr;
 }	t_img;
 
-/*typedef struct s_win
+typedef struct s_square
 {
-	//void	*mlx;
-	//void	*mlx_win;
-	//int		height;
-	//int		width;
-	//t_img	imgs;
-}	t_win;*/
-
-typedef struct s_square {
 	unsigned short int	x;
 	unsigned short int	y;
 	unsigned short int	size;
@@ -77,17 +62,19 @@ typedef struct s_game
 	int		map_fd;
 	int		w;
 	int		h;
-	int		collectible;
+	int		q_collec;
+	int		collected;
+	int		walk_cnt;
 	t_img	imgs;
 }	t_game;
 
-int		file_is_ber(char *str);
+int		file_is_ber(char *av, t_game *game);
 int		open_map(char *av, t_game *game);
 int		ft_errors(int n);
 int		ft_errors2(int n);
 void	create_map(int fd, t_game *game, char *av);
 void	print_matrix(t_game *game);
-//void	print_matrix2(t_game *game);
+void	set_values(t_game *g);
 int		parsing_map(t_game *game);
 int		is_rectangular(t_game *game);
 int		is_initial_position(t_game *game);
@@ -104,7 +91,7 @@ void	init_game(t_game *game);
 int		press_key(int keycode, t_game *game);
 void	move_w(t_game *g);
 //int		on_keypress(int keysym);
-//int		exit_game(t_game *g);
+int		exit_game(t_game *g);
 
 //int	on_destroy(t_game *game);
 //int	key_hook(int keycode, t_game *game);

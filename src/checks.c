@@ -13,13 +13,16 @@
 #include "../include/so_long.h"
 
 /*Funcion que verifica la extension .ber*/
-int	file_is_ber(char *str)
+int	file_is_ber(char *av, t_game *game)
 {
 	int	len;
 
-	len = ft_strlen(str);
-	if (ft_strncmp(&str[len - 4], ".ber", 4) == 0)
+	len = ft_strlen(av);
+	if (ft_strncmp(&av[len - 4], ".ber", 4) == 0)
+	{
+		set_values(game);
 		return (0);
+	}
 	else
 	{
 		write (2, "Error\n", 6);

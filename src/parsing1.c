@@ -61,6 +61,7 @@ int	is_surrounded_by_walls(t_game *game)
 	return (0);
 }
 
+/*Funcion que calcula y retorna cant. de collectibles*/
 int	q_collectible(t_game *game)
 {
 	int	y;
@@ -83,7 +84,7 @@ int	q_collectible(t_game *game)
 		}
 		y++;
 	}
-	game->collectible = count_c;
+	game->q_collec = count_c;
 	return (count_c);
 }
 

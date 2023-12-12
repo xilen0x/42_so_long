@@ -14,12 +14,6 @@
 #include "../include/so_long.h"
 #include "../include/window.h"
 
-/*int	on_keypress(int keysym)
-{
-	printf("Pressed key: %d\\n", keysym);
-	return (0);
-}*/
-
 // function that you want to call evety time you exit the game
 /*int	on_destroy(t_game *game)
 {
@@ -30,13 +24,14 @@
 	return (0);
 }*/
 
-/*int	key_hook(int keycode, t_game *game)
+/*Funcion que inicializa valores*/
+void	set_values(t_game *g)
 {
-	if (keycode == 65307)
-		//on_destroy(game);
-		exit_game(game);
-	return (0);
-}*/
+	g->collected = 0;
+	g->walk_cnt = 0;
+	g->h = 0;
+	g->w = 0;
+}
 
 /*Funcion que setea las imgs*/
 void	set_images(t_game *g)

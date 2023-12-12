@@ -15,7 +15,7 @@ int	press_key(int keycode, t_game *game)
 	if (keycode == KEY_ESC)
 		exit_game(game);
 	else if (keycode == KEY_W || keycode == KEY_UP)
-		move_w(game);//aki voy************************** debo crear/modificar funcion
+		move_w(game);
 	/*else if (keycode == KEY_A || keycode == KEY_LEFT)
 		move_a(game);
 	else if (keycode == KEY_S || keycode == KEY_DOWN)
