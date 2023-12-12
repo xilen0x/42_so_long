@@ -30,6 +30,8 @@ int	is_initial_position(t_game *game)
 			if (game->matrix[y][x] == 'P')
 			{
 				count_p++;
+				game->position.x = x;
+				game->position.y = y;
 			}
 			x++;
 		}

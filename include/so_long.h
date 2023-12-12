@@ -88,15 +88,12 @@ t_point	find_p(t_game *copy_map, t_game *game);
 void	set_images(t_game *game);
 void	set_images_to_win(t_game *game, char dir);
 void	init_game(t_game *game);
-
-int		press_key(int keycode, t_game *game);
-//void	move_up(t_game *g, int h, int w);
-void	move_right(t_game *g);
 void	set_player(t_game *g, int y, int x, char dir);
+int		press_key(int keycode, t_game *game);
+void	move_up(t_game *g);
+void	move_right(t_game *g);
+void	move_left(t_game *g);
+void	move_down(t_game *g);
 int		exit_game(t_game *g);
-
-//int	on_destroy(t_game *game);
-//int	key_hook(int keycode, t_game *game);
-
 
 #endif

@@ -48,6 +48,7 @@ void	set_images(t_game *g)
 	g->imgs.player.player_right = mlx_xpm_file_to_image(g->mlx, "./textures/player_right.xpm", &x, &x);
 	g->imgs.player.player_down = mlx_xpm_file_to_image(g->mlx, "./textures/player_down.xpm", &x, &x);
 	g->imgs.player.player_left = mlx_xpm_file_to_image(g->mlx, "./textures/player_left.xpm", &x, &x);
+	set_images_to_win(g, 'w');
 }
 
 void	set_player(t_game *g, int y, int x, char dir)

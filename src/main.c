@@ -29,11 +29,9 @@ int	main(int ac, char *av[])
 		parsing_map(&game);
 		init_game(&game);
 		set_images(&game);
- 		set_images_to_win(&game, 'w');
-        mlx_hook(game.mlx_win, X_EVENT_KEY_PRESS, 0, &press_key, &game);
-		
+		mlx_hook(game.mlx_win, X_EVENT_KEY_PRESS, 0, &press_key, &game);
+		mlx_hook(game.mlx_win, X_EVENT_KEY_EXIT, 0, &exit_game, &game);
 		mlx_loop(game.mlx);
-		//free(set_game);
 	}
 	else
 		ft_errors(1);
