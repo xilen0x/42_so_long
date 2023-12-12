@@ -66,6 +66,7 @@ typedef struct s_game
 	int		collected;
 	int		walk_cnt;
 	t_img	imgs;
+	t_point	position;
 }	t_game;
 
 int		file_is_ber(char *av, t_game *game);
@@ -83,14 +84,15 @@ int		has_only_one_exit(t_game *game);
 int		valid_path_to_exit(t_game *game);
 int		valid_path_to_collectables(t_game *game);
 int		q_collectible(t_game *game);
-t_point	find_p(t_game *copy_map);
+t_point	find_p(t_game *copy_map, t_game *game);
 void	set_images(t_game *game);
 void	set_images_to_win(t_game *game, char dir);
 void	init_game(t_game *game);
 
 int		press_key(int keycode, t_game *game);
-void	move_w(t_game *g);
-//int		on_keypress(int keysym);
+//void	move_up(t_game *g, int h, int w);
+void	move_right(t_game *g);
+void	set_player(t_game *g, int y, int x, char dir);
 int		exit_game(t_game *g);
 
 //int	on_destroy(t_game *game);

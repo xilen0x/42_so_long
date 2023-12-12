@@ -4,55 +4,54 @@
 
 void	set_open_exit(t_game *game)
 {
-	int	h;
-	int	w;
+	int	y;
+	int	x;
 
-	h = 0;
-	while (h < game->h)
+	x = 0;
+	while (x < game->h)
 	{
-		w = 0;
-		while (w < game->w)
+		y = 0;
+		while (y < game->w)
 		{
-			if (game->matrix[h * game->w + w][w] == 'E')
+			if (game->matrix[x][y] == 'E')
 				mlx_put_image_to_window(game->mlx, \
-						game->mlx_win, game->imgs.open, w * 32, h * 32);
-			w++;
+						game->mlx_win, game->imgs.open, x * 32, y * 32);
+			y++;
 		}
-		h++;
+		x++;
 	}
 }
 
-void	move_w(t_game *g)
+void	move_right(t_game *g)
 {
-	int		y;
-	int		x;
-	int		i;
+	int	x;
+	int	y;
 
-	y = 0;
-	i = 0;
-	while (y < g->h)
+	x = g->position.x;
+	y = g->position.y;
+	if (g->matrix[x - 1][y] >= 0 && g->matrix[x][y + 1] != '1')
 	{
-		x = 0;
-		while (x < g->w)
-		{
-			while (i < g->h && g->matrix[y][x] != 'P')
-				i++;
-			if (g->matrix[y][x] == 'C')
-				g->collected++;
-			else if (g->matrix[i - y][x] == 'E' && g->collected == g->q_collec)
-				exit_game(g);
-			else if (g->matrix[i - y][x] != '1' && g->matrix[i - y][x] != 'E')
-			{
-				g->matrix[y][x] = '0';
-				g->matrix[y][x] = 'P';
-				g->walk_cnt++;
-				ft_printf("%d\n", g->walk_cnt);
-				set_images_to_win(g, 'w');
-				if (g->collected == g->q_collec)
-					set_open_exit(g);
-			}
-			x++;
-		}
-		y++;
+		ft_printf("******************************************\n");
+		if (g->matrix[x][y + 1] == 'C')
+			g->collected++;
+		else if (g->matrix[x][y] == 'E' && g->collected == g->q_collec)
+			exit_game(g);
+		else if (g->matrix[x][y + 1] == 'E')
+			exit_game(g);
+		g->matrix[x][y] = '0';
+		g->matrix[x][y + 1] = 'P';
+		g->walk_cnt++;
+		//x = g->position.x;
+		//y = g->position.y;
+		set_images_to_win(g, 'd');
+		//set_player(g, y, x, 'd');
+		ft_printf("Steps N: %d\n", g->walk_cnt);
+		ft_printf("Collected N: %d\n", g->collected);
+		if (g->collected == g->q_collec)
+			set_open_exit(g);
+	}
+	else
+	{
+		ft_printf("+++++++++++++++++++++\n");
 	}
 }

@@ -59,7 +59,7 @@ int	is_rectangular(t_game *game)
 	return (0);
 }
 
-t_point	find_p(t_game *copy_map)
+t_point	find_p(t_game *copy_map, t_game *game)
 {
 	int		y;
 	int		x;
@@ -75,6 +75,8 @@ t_point	find_p(t_game *copy_map)
 			{
 				coord.x = x;
 				coord.y = y;
+				game->position.x = x;
+				game->position.y = y;
 				break ;
 			}
 			x++;
@@ -120,7 +122,7 @@ int	valid_path_to_exit(t_game *game)
 		copy_map.matrix[i] = ft_strdup(game->matrix[i]);
 		i++;
 	}
-	p_loc = find_p(&copy_map);
+	p_loc = find_p(&copy_map, game);
 	fill(copy_map.matrix, p_loc, &exit_found);
 	//print_matrix(&copy_map);
 	return (exit_found);

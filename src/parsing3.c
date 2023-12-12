@@ -47,7 +47,7 @@ int	valid_path_to_collectables(t_game *game)
 		copy_map.matrix[i] = ft_strdup(game->matrix[i]);
 		i++;
 	}
-	p_loc = find_p(&copy_map);
+	p_loc = find_p(&copy_map, game);
 	collectible = fill2(copy_map.matrix, p_loc, &game->q_collec);
 	//print_matrix(&copy_map);
 	return (collectible);
