@@ -36,8 +36,8 @@ void	set_values(t_game *g)
 /*Funcion que setea las imgs*/
 void	set_images(t_game *g)
 {
-	g->imgs.wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall.xpm", &(g->imgs.w), &(g->imgs.h));
-	g->imgs.floor = mlx_xpm_file_to_image(g->mlx, "./textures/open.xpm",&(g->imgs.w), &(g->imgs.h));
+	g->imgs.wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall2.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.floor = mlx_xpm_file_to_image(g->mlx, "./textures/floor.xpm",&(g->imgs.w), &(g->imgs.h));
 	g->imgs.coll = mlx_xpm_file_to_image(g->mlx, "./textures/coll.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.exit = mlx_xpm_file_to_image(g->mlx, "./textures/exit.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.open = mlx_xpm_file_to_image(g->mlx, "./textures/open.xpm", &(g->imgs.w), &(g->imgs.h));
