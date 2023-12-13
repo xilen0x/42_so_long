@@ -36,18 +36,15 @@ void	set_values(t_game *g)
 /*Funcion que setea las imgs*/
 void	set_images(t_game *g)
 {
-	int	x;
-
-	x = TILE_PXL;
-	g->imgs.wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall.xpm", &x, &x);
-	g->imgs.floor = mlx_xpm_file_to_image(g->mlx, "./textures/floor.xpm", &x, &x);
-	g->imgs.coll = mlx_xpm_file_to_image(g->mlx, "./textures/coll.xpm", &x, &x);
-	g->imgs.exit = mlx_xpm_file_to_image(g->mlx, "./textures/exit.xpm", &x, &x);
-	g->imgs.open = mlx_xpm_file_to_image(g->mlx, "./textures/open.xpm", &x, &x);
-	g->imgs.player.player_up = mlx_xpm_file_to_image(g->mlx, "./textures/player_up.xpm", &x, &x);
-	g->imgs.player.player_right = mlx_xpm_file_to_image(g->mlx, "./textures/player_right.xpm", &x, &x);
-	g->imgs.player.player_down = mlx_xpm_file_to_image(g->mlx, "./textures/player_down.xpm", &x, &x);
-	g->imgs.player.player_left = mlx_xpm_file_to_image(g->mlx, "./textures/player_left.xpm", &x, &x);
+	g->imgs.wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.floor = mlx_xpm_file_to_image(g->mlx, "./textures/floor.xpm",&(g->imgs.w), &(g->imgs.h));
+	g->imgs.coll = mlx_xpm_file_to_image(g->mlx, "./textures/coll.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.exit = mlx_xpm_file_to_image(g->mlx, "./textures/exit.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.open = mlx_xpm_file_to_image(g->mlx, "./textures/open.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.player.player_up = mlx_xpm_file_to_image(g->mlx, "./textures/player_up.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.player.player_right = mlx_xpm_file_to_image(g->mlx, "./textures/player_right.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.player.player_down = mlx_xpm_file_to_image(g->mlx, "./textures/player_down.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.player.player_left = mlx_xpm_file_to_image(g->mlx, "./textures/player_left.xpm", &(g->imgs.w), &(g->imgs.h));
 	set_images_to_win(g, 'w');
 }
 

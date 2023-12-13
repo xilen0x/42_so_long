@@ -33,19 +33,20 @@ void	create_matrix(t_game *game, char *av)
 void	create_map(int fd, t_game *game, char *av)
 {
 	char	*line;
-	int		row_count;
 
 	line = get_next_line(fd);
 	if (!line)
 		write (2, "Invalid map!\n", 13);
 	game->w = ft_strlen(line) - 1;
-	row_count = 1;
 	while (line)
 	{
-		game->h = row_count++;
+		game->h++;
 		free(line);
 		line = get_next_line(fd);
 	}
+	//printf("w: %d\n", game->w);
+	//printf("h: %d\n", game->h);
+	free(line);
 	close(fd);
 	create_matrix(game, av);
 }

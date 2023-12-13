@@ -12,7 +12,31 @@
 
 #include "../include/so_long.h"
 
-/*Funcion que cuenta la cantidad de P en el mapa*/
+/*Funcion que verifica si el mapa es rectangular*/
+int	is_rectangular(t_game *game)
+{
+	int		i;
+	int		curr_row_len;
+	int		first_row_len;
+
+	i = 0;
+	if (game->w <= 4 || game->w > 34)
+		ft_errors(3);
+	first_row_len = ft_strlen(game->matrix[i]);
+	while (i < game->h)
+	{
+		curr_row_len = ft_strlen(game->matrix[i]);
+		if (first_row_len != curr_row_len)
+			ft_errors(3);
+		i++;
+	}
+	return (0);
+}
+
+/* 
+Descr.: Busca y cuenta 'P' en el mapa, guardando su posición.
+Return: Cantidad de 'P' encontrados.
+*/
 int	is_initial_position(t_game *game)
 {
 	int		y;
@@ -37,28 +61,9 @@ int	is_initial_position(t_game *game)
 		}
 		y++;
 	}
+	//printf("x: %d\n", game->position.x);
+	//printf("y: %d\n", game->position.y);
 	return (count_p);
-}
-
-/*Funcion que verifica si el mapa es rectangular*/
-int	is_rectangular(t_game *game)
-{
-	int		i;
-	int		curr_row_len;
-	int		first_row_len;
-
-	i = 0;
-	if (game->w <= 4 || game->w > 34)
-		ft_errors(3);
-	first_row_len = ft_strlen(game->matrix[i]);
-	while (i < game->h)
-	{
-		curr_row_len = ft_strlen(game->matrix[i]);
-		if (first_row_len != (int)ft_strlen(game->matrix[i]))
-			ft_errors(3);
-		i++;
-	}
-	return (0);
 }
 
 t_point	find_p(t_game *copy_map, t_game *game)
@@ -75,10 +80,10 @@ t_point	find_p(t_game *copy_map, t_game *game)
 		{
 			if (copy_map->matrix[y][x] == 'P')
 			{
-				coord.x = x;
 				coord.y = y;
-				game->position.x = x;
+				coord.x = x;
 				game->position.y = y;
+				game->position.x = x;
 				break ;
 			}
 			x++;
@@ -111,7 +116,7 @@ int	valid_path_to_exit(t_game *game)
 {
 	int			i;
 	int			exit_found;
-	t_point		p_loc;
+	t_point		p_location;
 	t_game		copy_map;
 
 	exit_found = 0;
@@ -124,8 +129,8 @@ int	valid_path_to_exit(t_game *game)
 		copy_map.matrix[i] = ft_strdup(game->matrix[i]);
 		i++;
 	}
-	p_loc = find_p(&copy_map, game);
-	fill(copy_map.matrix, p_loc, &exit_found);
+	p_location = find_p(&copy_map, game);
+	fill(copy_map.matrix, p_location, &exit_found);
 	//print_matrix(&copy_map);
 	return (exit_found);
 }

@@ -34,7 +34,8 @@ int	is_surrounded_by_walls2(t_game *game, int q_cols, int q_rows)
 	return (0);
 }
 
-/*Funcion que verifica si el mapa esta rodeado de paredes*/
+/* Funcion que verifica si el mapa esta rodeado de paredes
+  Se verifica pared x pared en c/ciclo*/
 int	is_surrounded_by_walls(t_game *game)
 {
 	int	i;
@@ -61,7 +62,7 @@ int	is_surrounded_by_walls(t_game *game)
 	return (0);
 }
 
-/*Funcion que calcula y retorna cant. de collectibles*/
+/*Funcion que calcula y retorna cant. de collectibles 'C'*/
 int	q_collectible(t_game *game)
 {
 	int	y;
@@ -78,6 +79,7 @@ int	q_collectible(t_game *game)
 		{
 			if (game->matrix[y][x] == 'C')
 			{
+				//printf("y: %d\nx: %d\n", y, x);
 				count_c++;
 			}
 			x++;
