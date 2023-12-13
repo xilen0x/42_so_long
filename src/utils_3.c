@@ -24,7 +24,6 @@ void	set_open_exit(t_game *game)
 
 void	move_right(t_game *g)
 {
-	/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!aki voy, hay error al mover el muneco*/
 	int	x;
 	int	y;
 
@@ -41,13 +40,13 @@ void	move_right(t_game *g)
 		printf("2: %d\n", g->matrix[x][y + 1]);
 		print_matrix(g);
 		g->matrix[x][y] = '0';
-		g->matrix[x][y + 1] = 'P';
+		g->matrix[x][++y] = 'P';
 		g->walk_cnt++;
 		g->position.x = y;
 		g->position.y = x;
-		printf("1: %d\n", g->matrix[x][y]);
-		printf("2: %d\n", g->matrix[x][y + 1]);
-		print_matrix(g);
+		//printf("1: %d\n", g->matrix[x][y]);
+		//printf("2: %d\n", g->matrix[x][y + 1]);
+		//print_matrix(g);
 		set_images_to_win(g, 'd');
 		//update_player_position(game, keycode);
 		ft_printf("Steps N: %d\n", g->walk_cnt);
