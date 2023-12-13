@@ -2,23 +2,44 @@
 #include "../include/so_long.h"
 #include "../include/window.h"
 
+/*
+	y = 0;
+	while (y < copy_map->h)
+	{
+		x = 0;
+		while (x < copy_map->w)
+		{
+			if (copy_map->matrix[y][x] == 'P')
+			{
+				coord.y = y;
+				coord.x = x;
+				game->position.y = y;
+				game->position.x = x;
+				break ;
+			}
+			x++;
+		}
+		y++;
+	}
+*/
+
 void	set_open_exit(t_game *game)
 {
 	int	y;
 	int	x;
 
-	x = 0;
-	while (x < game->h)
+	y = 0;
+	while (y < game->w)
 	{
-		y = 0;
-		while (y < game->w)
+		x = 0;
+		while (x < game->h)
 		{
-			if (game->matrix[x][y] == 'E')
+			if (game->matrix[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, \
 						game->mlx_win, game->imgs.open, x * 32, y * 32);
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 }
 
@@ -33,7 +54,7 @@ void	move_right(t_game *g)
 	{
 		if (g->matrix[x][y + 1] == 'C')
 			g->collected++;
-		else if (g->matrix[x][y] == 'E' && g->collected == g->q_collec)
+		else if (g->matrix[x][y + 1] == 'E' && g->collected == g->q_collec)
 			exit_game(g);	
 		g->matrix[x][y] = '0';
 		g->matrix[x][++y] = 'P';
@@ -43,6 +64,7 @@ void	move_right(t_game *g)
 		set_images_to_win(g, 'd');
 		//ft_printf("Steps N: %d\n", g->walk_cnt);
 		//ft_printf("Collected N: %d\n", g->collected);
+		printf("q_collec: %d\n", g->q_collec);
 		if (g->collected == g->q_collec)
 			set_open_exit(g);
 	}
@@ -61,7 +83,7 @@ void	move_up(t_game *g)
 	{
 		if (g->matrix[x - 1][y] == 'C')
 			g->collected++;
-		else if (g->matrix[x][y] == 'E' && g->collected == g->q_collec)
+		else if (g->matrix[x - 1][y] == 'E' && g->collected == g->q_collec)
 			exit_game(g);	
 		g->matrix[x][y] = '0';
 		g->matrix[--x][y] = 'P';
@@ -89,7 +111,7 @@ void	move_left(t_game *g)
 	{
 		if (g->matrix[x][y - 1] == 'C')
 			g->collected++;
-		else if (g->matrix[x][y] == 'E' && g->collected == g->q_collec)
+		else if (g->matrix[x][y - 1] == 'E' && g->collected == g->q_collec)
 			exit_game(g);	
 		g->matrix[x][y] = '0';
 		g->matrix[x][--y] = 'P';

@@ -37,3 +37,7 @@ int	main(int ac, char *av[])
 		ft_errors(1);
 	return (0);
 }
+/* Falta corregir:
+- salida la pisa(pinta) antes de tener todos los banderines y luego no puede salir
+- posibles leaks
+*/
