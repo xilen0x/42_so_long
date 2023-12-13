@@ -31,47 +31,105 @@ void	move_right(t_game *g)
 	x = g->position.y;
 	if (g->matrix[x - 1][y] >= 0 && g->matrix[x][y + 1] != '1')
 	{
-		ft_printf("*** ENTRA ***\n");
 		if (g->matrix[x][y + 1] == 'C')
 			g->collected++;
 		else if (g->matrix[x][y] == 'E' && g->collected == g->q_collec)
-			exit_game(g);
-		printf("1: %d\n", g->matrix[x][y]);
-		printf("2: %d\n", g->matrix[x][y + 1]);
-		print_matrix(g);
+			exit_game(g);	
 		g->matrix[x][y] = '0';
 		g->matrix[x][++y] = 'P';
 		g->walk_cnt++;
 		g->position.x = y;
 		g->position.y = x;
-		//printf("1: %d\n", g->matrix[x][y]);
-		//printf("2: %d\n", g->matrix[x][y + 1]);
-		//print_matrix(g);
 		set_images_to_win(g, 'd');
-		//update_player_position(game, keycode);
+		//ft_printf("Steps N: %d\n", g->walk_cnt);
+		//ft_printf("Collected N: %d\n", g->collected);
+		if (g->collected == g->q_collec)
+			set_open_exit(g);
+	}
+	else
+		ft_printf("*** WALL ***\n");
+}
+
+void	move_up(t_game *g)
+{
+	int	x;
+	int	y;
+
+	y = g->position.x;
+	x = g->position.y;
+	if (g->matrix[x][y - 1] >= 0 && g->matrix[x - 1][y] != '1')
+	{
+		if (g->matrix[x - 1][y] == 'C')
+			g->collected++;
+		else if (g->matrix[x][y] == 'E' && g->collected == g->q_collec)
+			exit_game(g);	
+		g->matrix[x][y] = '0';
+		g->matrix[--x][y] = 'P';
+		g->walk_cnt++;
+		g->position.x = y;
+		g->position.y = x;
+		set_images_to_win(g, 'w');
 		ft_printf("Steps N: %d\n", g->walk_cnt);
 		ft_printf("Collected N: %d\n", g->collected);
 		if (g->collected == g->q_collec)
 			set_open_exit(g);
 	}
 	else
-		ft_printf("*** NO ENTRA ***\n");
-}
-
-void	move_up(t_game *g)
-{
-	(void)g;
-	ft_printf("UP!\n");
+		ft_printf("*** WALL ***\n");
 }
 
 void	move_left(t_game *g)
 {
-	(void)g;
-	ft_printf("LEFT!\n");
+	int	x;
+	int	y;
+
+	y = g->position.x;
+	x = g->position.y;
+	if (g->matrix[x - 1][y] >= 0 && g->matrix[x][y - 1] != '1')
+	{
+		if (g->matrix[x][y - 1] == 'C')
+			g->collected++;
+		else if (g->matrix[x][y] == 'E' && g->collected == g->q_collec)
+			exit_game(g);	
+		g->matrix[x][y] = '0';
+		g->matrix[x][--y] = 'P';
+		g->walk_cnt++;
+		g->position.x = y;
+		g->position.y = x;
+		set_images_to_win(g, 'a');
+		ft_printf("Steps N: %d\n", g->walk_cnt);
+		ft_printf("Collected N: %d\n", g->collected);
+		if (g->collected == g->q_collec)
+			set_open_exit(g);
+	}
+	else
+		ft_printf("*** WALL ***\n");
 }
 
 void	move_down(t_game *g)
 {
-	(void)g;
-	ft_printf("DOWN!\n");
+	int	x;
+	int	y;
+
+	y = g->position.x;
+	x = g->position.y;
+	if (g->matrix[x][y - 1] >= 0 && g->matrix[x + 1][y] != '1')
+	{
+		if (g->matrix[x + 1][y] == 'C')
+			g->collected++;
+		else if (g->matrix[x + 1][y] == 'E' && g->collected == g->q_collec)
+			exit_game(g);	
+		g->matrix[x][y] = '0';
+		g->matrix[++x][y] = 'P';
+		g->walk_cnt++;
+		g->position.x = y;
+		g->position.y = x;
+		set_images_to_win(g, 's');
+		ft_printf("Steps N: %d\n", g->walk_cnt);
+		ft_printf("Collected N: %d\n", g->collected);
+		if (g->collected == g->q_collec)
+			set_open_exit(g);
+	}
+	else
+		ft_printf("*** WALL ***\n");
 }

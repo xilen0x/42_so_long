@@ -74,18 +74,14 @@ void	set_images_to_win(t_game *g, char dir)
 			if (g->matrix[y][x] == '1')
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.wall, x * 32, y * 32);
-
 			else if (g->matrix[y][x] == 'C')
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.coll, x * 32, y * 32);
-
 			else if (g->matrix[y][x] == 'P')
 				set_player(g, x, y, dir);
-
 			else if (g->matrix[y][x] == 'E')
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.exit, x * 32, y * 32);
-
 			else
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.floor, x * 32, y * 32);
@@ -94,7 +90,6 @@ void	set_images_to_win(t_game *g, char dir)
 		y++;
 	}
 }
-
 
 /*Funcion que inicializa minilibx, crea una ventana*/
 void	init_game(t_game *game)
