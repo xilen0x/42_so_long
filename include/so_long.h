@@ -46,14 +46,6 @@ typedef struct s_img
 	void		*img_ptr;
 }	t_img;
 
-/*typedef struct s_square
-{
-	unsigned short int	x;
-	unsigned short int	y;
-	unsigned short int	size;
-	int					color;
-}		t_square;*/
-
 typedef struct s_game
 {
 	void	*mlx;

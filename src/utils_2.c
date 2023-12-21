@@ -4,7 +4,9 @@
 
 int	exit_game(t_game *g)
 {
-	write (1, "GAME OVER!\n", 11);
+	write (1, "####################\n", 21);
+	write (1, "     End Game!\n", 15);
+	write (1, "####################\n", 21);
 	mlx_destroy_window(g->mlx, g->mlx_win);
 	free(g->mlx);
 	exit(0);
