@@ -33,6 +33,14 @@ typedef struct s_player
 	void	*player_left;
 }	t_player;
 
+typedef struct s_text
+{
+	void	*s;
+	void	*t;
+	void	*e;
+	void	*p;
+}	t_text;
+
 typedef struct s_img
 {
 	void		*wall;
@@ -40,6 +48,8 @@ typedef struct s_img
 	void		*coll;
 	void		*exit;
 	void		*open;
+	void		*black;
+	t_text		text;		
 	t_player	player;
 	int			w;
 	int			h;
@@ -87,5 +97,6 @@ void	move_right(t_game *g);
 void	move_left(t_game *g);
 void	move_down(t_game *g);
 int		exit_game(t_game *g);
+void	set_images_to_win_bonus(t_game *g);
 
 #endif

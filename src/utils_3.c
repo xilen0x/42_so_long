@@ -14,8 +14,7 @@ void	set_open_exit(t_game *game)
 		while (x < game->h)
 		{
 			if (game->matrix[game->position.y][game->position.x] == 'E')
-				mlx_put_image_to_window(game->mlx, \
-						game->mlx_win, game->imgs.open, x * 32, y * 32);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.open, x * 32, y * 32);
 			x++;
 		}
 		y++;
@@ -77,7 +76,7 @@ void	move_up(t_game *g)
 			set_images_to_win(g, 'w');
 			ft_printf("Steps N: %d\n", g->walk_cnt);
 			ft_printf("Collected N: %d\n", g->collected);
-			print_matrix(g);
+			ft_printf("Total to Collect: %d\n", g->q_collec);
 			if (g->collected == g->q_collec)
 				set_open_exit(g);
 		}
@@ -109,6 +108,7 @@ void	move_left(t_game *g)
 			set_images_to_win(g, 'a');
 			ft_printf("Steps N: %d\n", g->walk_cnt);
 			ft_printf("Collected N: %d\n", g->collected);
+			ft_printf("Total to Collect: %d\n", g->q_collec);
 			if (g->collected == g->q_collec)
 				set_open_exit(g);
 		}
@@ -140,7 +140,7 @@ void	move_down(t_game *g)
 			set_images_to_win(g, 's');
 			ft_printf("Steps N: %d\n", g->walk_cnt);
 			ft_printf("Collected N: %d\n", g->collected);
-			print_matrix(g);
+			ft_printf("Total to Collect: %d\n", g->q_collec);
 			if (g->collected == g->q_collec)
 				set_open_exit(g);
 		}

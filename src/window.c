@@ -45,6 +45,8 @@ void	set_images(t_game *g)
 	g->imgs.player.player_right = mlx_xpm_file_to_image(g->mlx, "./textures/player_right.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.player.player_down = mlx_xpm_file_to_image(g->mlx, "./textures/player_down.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.player.player_left = mlx_xpm_file_to_image(g->mlx, "./textures/player_left.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.black = mlx_xpm_file_to_image(g->mlx, "./textures/black.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.text.s = mlx_xpm_file_to_image(g->mlx, "./textures/s.xpm", &(g->imgs.w), &(g->imgs.h));
 	set_images_to_win(g, 'w');
 }
 
@@ -85,6 +87,29 @@ void	set_images_to_win(t_game *g, char dir)
 			else
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.floor, x * 32, y * 32);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	set_images_to_win_bonus(t_game *g)
+{
+	int		y;
+	int		x;
+
+	y = 0;
+	while (y < g->h)
+	{
+		x = 0;
+		while (x < g->w)
+		{
+			if (g->matrix[y][x] == 'x')
+				mlx_put_image_to_window(g->mlx, \
+						g->mlx_win, g->imgs.black, x * 32, y * 32);
+			else if (g->matrix[y][x] == 'L')
+				mlx_put_image_to_window(g->mlx, \
+						g->mlx_win, g->imgs.text.s, x * 32, y * 32);
 			x++;
 		}
 		y++;
