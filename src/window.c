@@ -33,7 +33,7 @@ void	set_values(t_game *g)
 	g->w = 0;
 }
 
-/*Funcion que setea las imgs*/
+/*Funcion que asocia las imgs en la estructura*/
 void	set_images(t_game *g)
 {
 	g->imgs.wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall2.xpm", &(g->imgs.w), &(g->imgs.h));
@@ -45,8 +45,12 @@ void	set_images(t_game *g)
 	g->imgs.player.player_right = mlx_xpm_file_to_image(g->mlx, "./textures/player_right.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.player.player_down = mlx_xpm_file_to_image(g->mlx, "./textures/player_down.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.player.player_left = mlx_xpm_file_to_image(g->mlx, "./textures/player_left.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.player.barrer_a = mlx_xpm_file_to_image(g->mlx, "./textures/barrer.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.black = mlx_xpm_file_to_image(g->mlx, "./textures/black.xpm", &(g->imgs.w), &(g->imgs.h));
 	g->imgs.text.s = mlx_xpm_file_to_image(g->mlx, "./textures/s.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.text.t = mlx_xpm_file_to_image(g->mlx, "./textures/T.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.text.e = mlx_xpm_file_to_image(g->mlx, "./textures/E.xpm", &(g->imgs.w), &(g->imgs.h));
+	g->imgs.text.p = mlx_xpm_file_to_image(g->mlx, "./textures/P.xpm", &(g->imgs.w), &(g->imgs.h));
 	set_images_to_win(g, 'w');
 }
 
@@ -62,6 +66,7 @@ void	set_player(t_game *g, int y, int x, char dir)
 		mlx_put_image_to_window(g->mlx, g->mlx_win, g->imgs.player.player_right, y * 32, x * 32);
 }
 
+/*Funcion que setea la imagen en la ventana*/
 void	set_images_to_win(t_game *g, char dir)
 {
 	int		y;
@@ -73,9 +78,13 @@ void	set_images_to_win(t_game *g, char dir)
 		x = 0;
 		while (x < g->w)
 		{
+			//set_images_to_win_bonus(g);
 			if (g->matrix[y][x] == '1')
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.wall, x * 32, y * 32);
+			else if (g->matrix[y][x] == 'x')
+				mlx_put_image_to_window(g->mlx, \
+						g->mlx_win, g->imgs.black, x * 32, y * 32);
 			else if (g->matrix[y][x] == 'C')
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.coll, x * 32, y * 32);
@@ -84,32 +93,12 @@ void	set_images_to_win(t_game *g, char dir)
 			else if (g->matrix[y][x] == 'E')
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.exit, x * 32, y * 32);
+			else if (g->matrix[y][x] == '@')
+				mlx_put_image_to_window(g->mlx, \
+						g->mlx_win, g->imgs.player.barrer_a, x * 32, y * 32);
 			else
 				mlx_put_image_to_window(g->mlx, \
 						g->mlx_win, g->imgs.floor, x * 32, y * 32);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	set_images_to_win_bonus(t_game *g)
-{
-	int		y;
-	int		x;
-
-	y = 0;
-	while (y < g->h)
-	{
-		x = 0;
-		while (x < g->w)
-		{
-			if (g->matrix[y][x] == 'x')
-				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.black, x * 32, y * 32);
-			else if (g->matrix[y][x] == 'L')
-				mlx_put_image_to_window(g->mlx, \
-						g->mlx_win, g->imgs.text.s, x * 32, y * 32);
 			x++;
 		}
 		y++;

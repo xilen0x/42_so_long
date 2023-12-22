@@ -7,18 +7,20 @@ void	set_open_exit(t_game *game)
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y < game->w)
+	y = game->exit.y;
+	x = game->exit.x;
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.open, x * 32, y * 32);
+	/*while (y < game->w)
 	{
 		x = 0;
 		while (x < game->h)
 		{
-			if (game->matrix[game->position.y][game->position.x] == 'E')
+			if (game->matrix[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.open, x * 32, y * 32);
 			x++;
 		}
 		y++;
-	}
+	}*/
 }
 
 void	move_right(t_game *g)
@@ -32,7 +34,7 @@ void	move_right(t_game *g)
 	{
 		if (g->matrix[y][x + 1] == 'C')
 			g->collected++;
-		if (g->matrix[y][x + 1] == 'E' && g->collected == g->q_collec)
+		if (g->matrix[y][x + 1] == '@' || (g->matrix[y][x + 1] == 'E' && g->collected == g->q_collec))// falta terminar esta linea en las otras funciones(g->matrix[y][x + 1] == '@' || )
 			exit_game(g);
 		else if (g->matrix[y][x + 1] != '1' && g->matrix[y][x + 1] != 'E')
 		{

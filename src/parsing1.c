@@ -107,6 +107,8 @@ int	has_only_one_exit(t_game *game)
 			if (game->matrix[y][x] == 'E')
 			{
 				count_e++;
+				game->exit.x = x;
+				game->exit.y = y;
 			}
 			x++;
 		}

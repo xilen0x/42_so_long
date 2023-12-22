@@ -13,9 +13,6 @@
 #include "../mlx/mlx.h"
 #include "../include/so_long.h"
 #include "../include/window.h"
-/*
-cc main.c -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
-*/
 
 int	main(int ac, char *av[])
 {
@@ -29,7 +26,6 @@ int	main(int ac, char *av[])
 		parsing_map(&game);
 		init_game(&game);
 		set_images(&game);
-		set_images_to_win_bonus(&game);
 		mlx_hook(game.mlx_win, X_EVENT_KEY_PRESS, 0, &press_key, &game);
 		mlx_hook(game.mlx_win, X_EVENT_KEY_EXIT, 0, &exit_game, &game);
 		mlx_loop(game.mlx);
@@ -38,7 +34,3 @@ int	main(int ac, char *av[])
 		ft_errors(1);
 	return (0);
 }
-/* Falta corregir:
-- salida la pisa(pinta) antes de tener todos los banderines y luego no puede salir
-- posibles leaks
-*/

@@ -131,6 +131,6 @@ int	valid_path_to_exit(t_game *game)
 	}
 	p_location = find_p(&copy_map, game);
 	fill(copy_map.matrix, p_location, &exit_found);
-	//print_matrix(&copy_map);
+	free(&copy_map);//revisar leaks!!!!
 	return (exit_found);
 }

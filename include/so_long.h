@@ -31,6 +31,7 @@ typedef struct s_player
 	void	*player_right;
 	void	*player_down;
 	void	*player_left;
+	void	*barrer_a;
 }	t_player;
 
 typedef struct s_text
@@ -39,6 +40,7 @@ typedef struct s_text
 	void	*t;
 	void	*e;
 	void	*p;
+	void	*o;
 }	t_text;
 
 typedef struct s_img
@@ -69,6 +71,7 @@ typedef struct s_game
 	int		walk_cnt;
 	t_img	imgs;
 	t_point	position;
+	t_point exit;
 }	t_game;
 
 int		file_is_ber(char *av, t_game *game);
@@ -97,6 +100,6 @@ void	move_right(t_game *g);
 void	move_left(t_game *g);
 void	move_down(t_game *g);
 int		exit_game(t_game *g);
-void	set_images_to_win_bonus(t_game *g);
-
+//void	set_images_to_win_bonus(t_game *g);
+//void	set_images_to_win_bonus_barrer(t_game *g);
 #endif
