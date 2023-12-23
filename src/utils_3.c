@@ -66,7 +66,7 @@ void	move_up(t_game *g)
 	{
 		if (g->matrix[y - 1][x] == 'C')
 			g->collected++;
-		if (g->matrix[y - 1][x] == 'E' && g->collected == g->q_collec)
+		if (g->matrix[y - 1][x] == '@' || (g->matrix[y - 1][x] == 'E' && g->collected == g->q_collec))
 			exit_game(g);
 		else if (g->matrix[y - 1][x] != '1' && g->matrix[y - 1][x] != 'E')
 		{
@@ -98,7 +98,7 @@ void	move_left(t_game *g)
 	{
 		if (g->matrix[y][x - 1] == 'C')
 			g->collected++;
-		if (g->matrix[y][x - 1] == 'E' && g->collected == g->q_collec)
+		if (g->matrix[y][x - 1] == '@' || (g->matrix[y][x - 1] == 'E' && g->collected == g->q_collec))
 			exit_game(g);	
 		else if (g->matrix[y][x - 1] != '1' && g->matrix[y][x - 1] != 'E')
 		{
@@ -130,7 +130,7 @@ void	move_down(t_game *g)
 	{
 		if (g->matrix[y + 1][x] == 'C')
 			g->collected++;
-		if (g->matrix[y + 1][x] == 'E' && g->collected == g->q_collec)
+		if (g->matrix[y + 1][x] == '@' || (g->matrix[y + 1][x] == 'E' && g->collected == g->q_collec))
 			exit_game(g);
 		else if (g->matrix[y + 1][x] != '1' && g->matrix[y + 1][x] != 'E')
 		{

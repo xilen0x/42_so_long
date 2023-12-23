@@ -47,7 +47,6 @@ int	parsing_map(t_game *game)
 		ft_errors(4);
 	if (q_collectible(game) < 1)
 		ft_errors(3);
-	//print_matrix(game);
 	return (0);
 }
 

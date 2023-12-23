@@ -26,18 +26,11 @@ int	ft_errors2(int n)
 		write (2, "It was not possible to initialize the program!\n", 47);
 		exit(1);
 	}
-	/*else if (n == 6)
-	{
-		write (2, "Error\n", 6);
-		write (2, "Invalid map file!\n", 18);
-		exit(1);
-	}
 	else
 	{
 		write (2, "Error\n", 6);
-		write (2, "otro!\n", 6);
 		exit(1);
-	}*/
+	}
 	return (1);
 }
 
@@ -79,4 +72,19 @@ void	print_matrix(t_game *game)
 		ft_printf("%s", game->matrix[i]);
 		i++;
 	}
+}
+
+/*funcion que libera la mem. de los mapas*/
+void	free_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->h)
+	{
+		free(game->matrix[i]);
+		game->matrix[i] = NULL;
+		i++;
+	}
+	free(game->matrix);
 }

@@ -61,8 +61,6 @@ int	is_initial_position(t_game *game)
 		}
 		y++;
 	}
-	//printf("x: %d\n", game->position.x);
-	//printf("y: %d\n", game->position.y);
 	return (count_p);
 }
 
@@ -122,7 +120,12 @@ int	valid_path_to_exit(t_game *game)
 	exit_found = 0;
 	copy_map.w = game->w;
 	copy_map.h = game->h;
-	copy_map.matrix = malloc(sizeof(char *) * (game->h + 1));
+	copy_map.matrix = (char **)malloc(sizeof(char *) * (game->h + 1));
+	if (!copy_map.matrix)
+	{
+		free(copy_map.matrix);
+		return (1);
+	}
 	i = 0;
 	while (i < game->h)
 	{
@@ -131,6 +134,6 @@ int	valid_path_to_exit(t_game *game)
 	}
 	p_location = find_p(&copy_map, game);
 	fill(copy_map.matrix, p_location, &exit_found);
-	free(&copy_map);//revisar leaks!!!!
+	free_map(&copy_map);
 	return (exit_found);
 }

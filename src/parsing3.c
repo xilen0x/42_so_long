@@ -28,7 +28,6 @@ int	fill2(char **map, t_point cur, int *collectible)
 		fill2(map, (t_point){cur.x, cur.y - 1}, collectible);
 		fill2(map, (t_point){cur.x, cur.y + 1}, collectible);
 	}
-	//printf("col: %d\n", *collectible);
 	return (*collectible);
 }
 
@@ -41,7 +40,12 @@ int	valid_path_to_collectables(t_game *game)
 	int			collectible;
 
 	i = 0;
-	copy_map.matrix = malloc(sizeof(char *) * (game->h + 1));
+	copy_map.matrix = (char **)malloc(sizeof(char *) * (game->h + 1));
+	if (!copy_map.matrix)
+	{
+		free(copy_map.matrix);
+		return (1);
+	}
 	while (game->matrix[i])
 	{
 		copy_map.matrix[i] = ft_strdup(game->matrix[i]);
@@ -49,7 +53,6 @@ int	valid_path_to_collectables(t_game *game)
 	}
 	p_loc = find_p(&copy_map, game);
 	collectible = fill2(copy_map.matrix, p_loc, &game->q_collec);
-	//print_matrix(&copy_map);
+	free_map(&copy_map);
 	return (collectible);
 }
-

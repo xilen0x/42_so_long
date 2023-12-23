@@ -20,6 +20,8 @@ void	create_matrix(t_game *game, char *av)
 	i = 0;
 	open_map(av, game);
 	game->matrix = malloc(sizeof(char *) * (game->h + 1));
+	if (!game->matrix)
+		return ;
 	while (i < game->h)
 	{
 		game->matrix[i] = get_next_line(game->map_fd);
@@ -44,8 +46,6 @@ void	create_map(int fd, t_game *game, char *av)
 		free(line);
 		line = get_next_line(fd);
 	}
-	//printf("w: %d\n", game->w);
-	//printf("h: %d\n", game->h);
 	free(line);
 	close(fd);
 	create_matrix(game, av);

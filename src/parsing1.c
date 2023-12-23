@@ -85,7 +85,6 @@ int	q_collectible(t_game *game)
 		}
 		y++;
 	}
-	//printf("count_c: %d\n", count_c);
 	game->q_collec = count_c;
 	return (count_c);
 }

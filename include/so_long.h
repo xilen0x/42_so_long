@@ -100,6 +100,6 @@ void	move_right(t_game *g);
 void	move_left(t_game *g);
 void	move_down(t_game *g);
 int		exit_game(t_game *g);
-//void	set_images_to_win_bonus(t_game *g);
-//void	set_images_to_win_bonus_barrer(t_game *g);
+void	free_map(t_game *game);
+
 #endif
