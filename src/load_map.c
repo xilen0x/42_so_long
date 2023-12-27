@@ -19,7 +19,7 @@ void	create_matrix(t_game *game, char *av)
 
 	i = 0;
 	open_map(av, game);
-	game->matrix = malloc(sizeof(char *) * (game->h + 1));
+	game->matrix = (char **)malloc(sizeof(char *) * (game->h + 1));
 	if (!game->matrix)
 		return ;
 	while (i < game->h)
