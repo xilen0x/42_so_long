@@ -26,3 +26,12 @@ int	press_key(int keycode, t_game *game)
 		move_right(game);
 	return (0);
 }
+
+/*Funcion que inicializa valores*/
+void	set_values(t_game *g)
+{
+	g->collected = 0;
+	g->walk_cnt = 0;
+	g->h = 0;
+	g->w = 0;
+}

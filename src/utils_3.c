@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_3.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/23 20:51:14 by castorga          #+#    #+#             */
+/*   Updated: 2023/12/23 20:51:16 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/so_long.h"
 #include "../include/window.h"
@@ -9,18 +20,8 @@ void	set_open_exit(t_game *game)
 
 	y = game->exit.y;
 	x = game->exit.x;
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.open, x * 32, y * 32);
-	/*while (y < game->w)
-	{
-		x = 0;
-		while (x < game->h)
-		{
-			if (game->matrix[y][x] == 'E')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->imgs.open, x * 32, y * 32);
-			x++;
-		}
-		y++;
-	}*/
+	mlx_put_image_to_window(game->mlx, game->mlx_win, \
+	game->imgs.open, x * 32, y * 32);
 }
 
 void	move_right(t_game *g)
@@ -34,7 +35,8 @@ void	move_right(t_game *g)
 	{
 		if (g->matrix[y][x + 1] == 'C')
 			g->collected++;
-		if (g->matrix[y][x + 1] == '@' || (g->matrix[y][x + 1] == 'E' && g->collected == g->q_collec))// falta terminar esta linea en las otras funciones(g->matrix[y][x + 1] == '@' || )
+		if (g->matrix[y][x + 1] == '@' || \
+		(g->matrix[y][x + 1] == 'E' && g->collected == g->q_collec))
 			exit_game(g);
 		else if (g->matrix[y][x + 1] != '1' && g->matrix[y][x + 1] != 'E')
 		{
@@ -45,14 +47,10 @@ void	move_right(t_game *g)
 			g->walk_cnt++;
 			set_images_to_win(g, 'd');
 			ft_printf("Steps N: %d\n", g->walk_cnt);
-			ft_printf("Collected N: %d\n", g->collected);
-			ft_printf("Total to Collect: %d\n", g->q_collec);
 			if (g->collected == g->q_collec)
 				set_open_exit(g);
 		}
 	}
-	else
-		ft_printf("*** WALL ***\n");
 }
 
 void	move_up(t_game *g)
@@ -66,7 +64,8 @@ void	move_up(t_game *g)
 	{
 		if (g->matrix[y - 1][x] == 'C')
 			g->collected++;
-		if (g->matrix[y - 1][x] == '@' || (g->matrix[y - 1][x] == 'E' && g->collected == g->q_collec))
+		if (g->matrix[y - 1][x] == '@' || \
+		(g->matrix[y - 1][x] == 'E' && g->collected == g->q_collec))
 			exit_game(g);
 		else if (g->matrix[y - 1][x] != '1' && g->matrix[y - 1][x] != 'E')
 		{
@@ -77,14 +76,10 @@ void	move_up(t_game *g)
 			g->walk_cnt++;
 			set_images_to_win(g, 'w');
 			ft_printf("Steps N: %d\n", g->walk_cnt);
-			ft_printf("Collected N: %d\n", g->collected);
-			ft_printf("Total to Collect: %d\n", g->q_collec);
 			if (g->collected == g->q_collec)
 				set_open_exit(g);
 		}
 	}
-	else
-		ft_printf("*** WALL ***\n");
 }
 
 void	move_left(t_game *g)
@@ -98,8 +93,9 @@ void	move_left(t_game *g)
 	{
 		if (g->matrix[y][x - 1] == 'C')
 			g->collected++;
-		if (g->matrix[y][x - 1] == '@' || (g->matrix[y][x - 1] == 'E' && g->collected == g->q_collec))
-			exit_game(g);	
+		if (g->matrix[y][x - 1] == '@' || \
+		(g->matrix[y][x - 1] == 'E' && g->collected == g->q_collec))
+			exit_game(g);
 		else if (g->matrix[y][x - 1] != '1' && g->matrix[y][x - 1] != 'E')
 		{
 			g->matrix[y][x] = '0';
@@ -109,14 +105,10 @@ void	move_left(t_game *g)
 			g->walk_cnt++;
 			set_images_to_win(g, 'a');
 			ft_printf("Steps N: %d\n", g->walk_cnt);
-			ft_printf("Collected N: %d\n", g->collected);
-			ft_printf("Total to Collect: %d\n", g->q_collec);
 			if (g->collected == g->q_collec)
 				set_open_exit(g);
 		}
 	}
-	else
-		ft_printf("*** WALL ***\n");
 }
 
 void	move_down(t_game *g)
@@ -130,7 +122,8 @@ void	move_down(t_game *g)
 	{
 		if (g->matrix[y + 1][x] == 'C')
 			g->collected++;
-		if (g->matrix[y + 1][x] == '@' || (g->matrix[y + 1][x] == 'E' && g->collected == g->q_collec))
+		if (g->matrix[y + 1][x] == '@' || \
+		(g->matrix[y + 1][x] == 'E' && g->collected == g->q_collec))
 			exit_game(g);
 		else if (g->matrix[y + 1][x] != '1' && g->matrix[y + 1][x] != 'E')
 		{
@@ -141,12 +134,8 @@ void	move_down(t_game *g)
 			g->walk_cnt++;
 			set_images_to_win(g, 's');
 			ft_printf("Steps N: %d\n", g->walk_cnt);
-			ft_printf("Collected N: %d\n", g->collected);
-			ft_printf("Total to Collect: %d\n", g->q_collec);
 			if (g->collected == g->q_collec)
 				set_open_exit(g);
 		}
 	}
-	else
-		ft_printf("*** WALL ***\n");
 }
