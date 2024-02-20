@@ -5,7 +5,7 @@ The "so_long" is a computer graphics project, in which we have worked with the m
 > 
 
 <!-- ![Screenshot](https://raw.githubusercontent.com/xilen0x/xilen0x/master/images_x_repos/so_long.png) -->
-[![Watch the video](https://raw.githubusercontent.com/xilen0x/xilen0x/master/images_x_repos/so_long.png)](https://www.youtube.com/watch?v=NeLeEFs3HWc))
+[![Watch the video](https://raw.githubusercontent.com/xilen0x/xilen0x/master/images_x_repos/so_long.png)](https://youtu.be/NeLeEFs3HWc?si=4RYK9WulQzmseuh7))
 
 ### Install & run
 ```
