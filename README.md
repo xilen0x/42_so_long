@@ -20,3 +20,8 @@ $ make clean
 $ make fclean
 $ make re
 ```
+### How can you contribute?
+  * Finding and correcting bugs
+  * Add some animation
+  * Adding window punctuation
+  * Other
